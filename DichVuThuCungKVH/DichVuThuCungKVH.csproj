@@ -202,6 +202,7 @@
     <Content Include="Views\DVTC\SanPhamPartial.cshtml" />
     <Content Include="Views\User\DangKy.cshtml" />
     <Content Include="Views\User\DangNhap.cshtml" />
+    <Content Include="Views\DVTC\Slider.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
