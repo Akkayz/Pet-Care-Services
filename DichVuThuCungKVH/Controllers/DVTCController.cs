@@ -33,5 +33,9 @@ namespace DichVuThuCung.Controllers
         {
             return View();
         }
+        public ActionResult FormDatLich()
+        {
+            return View();
+        }
     }
 }

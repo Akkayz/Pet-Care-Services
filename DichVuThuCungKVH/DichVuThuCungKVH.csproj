@@ -164,6 +164,9 @@
     <Content Include="Images\Logo.jpg" />
     <Content Include="Images\LogoKVH.png" />
     <Content Include="Images\phone-icon.jpg" />
+    <Content Include="Images\Slider\pethotel.jpg" />
+    <Content Include="Images\Slider\petshop.jpg" />
+    <Content Include="Images\Slider\petspa.jpg" />
     <Content Include="Images\thoi-trangjpg.jpg" />
     <Content Include="Images\tw-icon.jpg" />
     <Content Include="Images\yt_iocn.jpg" />
@@ -205,6 +208,7 @@
     <Content Include="Views\User\DangNhap.cshtml" />
     <Content Include="Views\DVTC\Slider.cshtml" />
     <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\DVTC\FormDatLich.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
