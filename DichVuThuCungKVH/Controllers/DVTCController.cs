@@ -29,5 +29,9 @@ namespace DichVuThuCung.Controllers
         {
             return PartialView();
         }
+        public ActionResult Slider()
+        {
+            return View();
+        }
     }
 }
