@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using DichVuThuCungKVH.Model;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DichVuThuCungKVH.Model;
 
 namespace DichVuThuCungKVH.Areas.Admin.Controllers
 {

@@ -4,36 +4,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style type="text/css">
-    td {
-        height: 40px;
-    }
-</style>
-<h4 style="color:red; text-align:center;">@ViewBag.ThongBao</h4>
-<h2 style="text-align:center;">ĐĂNG NHẬP</h2>
-<table align="center">
-    @using (Html.BeginForm())
-    {
-        @Html.ValidationSummary(true)
-        <tr>
-            <td>Tên đăng nhập: </td>
-            <td>
-                @Html.TextBox("TenDN")
-                @ViewData["Err1"]
-            </td>
-        </tr>
-        <tr>
-            <td>Mật khẩu: </td>
-            <td>
-                @Html.Password("MatKhau") @ViewBag.Err2
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Đăng nhập" />
-            </td>
-        </tr>
-    }
-</table>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center text-dark mt-5">ĐĂNG NHẬP</h2>
+            <div class="card my-5 custom-card">
+                <form method="post" action="@Url.Action("Login", "Home")" class="card-body p-lg-5">
+                    <div class="text-center">
+                        <img src="~/Images/LogoKVH.png" class="img-fluid profile-image-pic img-thumbnail my-3" width="200px" alt="profile">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control custom-input" id="UserName" name="UserName" placeholder="Tên người dùng">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control custom-input" id="Password" name="Password" placeholder="Mật khẩu">
+                    </div>
+                    @if (!string.IsNullOrEmpty(ViewBag.ThongBao))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewBag.ThongBao
+                        </div>
+                    }
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary px-5 w-100 custom-button">Đăng nhập</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

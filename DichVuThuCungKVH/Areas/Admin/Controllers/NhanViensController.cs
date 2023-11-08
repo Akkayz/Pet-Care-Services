@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using DichVuThuCungKVH.Model;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DichVuThuCungKVH.Model;
 
 namespace DichVuThuCungKVH.Areas.Admin.Controllers
 {
@@ -44,7 +40,7 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
         }
 
         // POST: Admin/NhanViens/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -78,7 +74,7 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
         }
 
         // POST: Admin/NhanViens/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -1,6 +1,5 @@
 ﻿using DichVuThuCungKVH.Model;
 using System;
-using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 
