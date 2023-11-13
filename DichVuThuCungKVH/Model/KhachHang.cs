@@ -17,11 +17,11 @@ namespace DichVuThuCungKVH.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KhachHang()
         {
-            this.DonDichVus = new HashSet<DonDichVu>();
             this.DonHangs = new HashSet<DonHang>();
         }
     
         public int MaKH { get; set; }
+        public Nullable<int> MaTC { get; set; }
         public string TenKH { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public string SDT { get; set; }
@@ -31,10 +31,8 @@ namespace DichVuThuCungKVH.Model
         public Nullable<int> MaTK { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DonDichVu> DonDichVus { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }
         public virtual TaiKhoan TaiKhoan { get; set; }
-        public virtual TaiKhoan TaiKhoan1 { get; set; }
+        public virtual ThuCung ThuCung { get; set; }
     }
 }

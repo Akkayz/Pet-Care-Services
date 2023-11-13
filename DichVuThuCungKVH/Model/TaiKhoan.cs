@@ -18,9 +18,7 @@ namespace DichVuThuCungKVH.Model
         public TaiKhoan()
         {
             this.KhachHangs = new HashSet<KhachHang>();
-            this.KhachHangs1 = new HashSet<KhachHang>();
             this.NhanViens = new HashSet<NhanVien>();
-            this.QuanLis = new HashSet<QuanLi>();
         }
     
         public int MaTK { get; set; }
@@ -32,10 +30,6 @@ namespace DichVuThuCungKVH.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KhachHang> KhachHangs1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NhanVien> NhanViens { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<QuanLi> QuanLis { get; set; }
     }
 }

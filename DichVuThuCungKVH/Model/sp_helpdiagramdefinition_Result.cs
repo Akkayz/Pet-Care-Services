@@ -10,16 +10,10 @@
 namespace DichVuThuCungKVH.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class DonDichVu
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int MaDDV { get; set; }
-        public Nullable<System.DateTime> NgayDat { get; set; }
-        public Nullable<System.DateTime> NgayGiao { get; set; }
-        public Nullable<bool> TrangThaiThanhToan { get; set; }
-        public Nullable<int> MaKH { get; set; }
-        public Nullable<int> MaNV { get; set; }
-        public Nullable<int> MaDV { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

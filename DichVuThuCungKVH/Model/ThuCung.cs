@@ -12,24 +12,26 @@ namespace DichVuThuCungKVH.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class CTPhieuNhan
+    public partial class ThuCung
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CTPhieuNhan()
+        public ThuCung()
         {
+            this.KhachHangs = new HashSet<KhachHang>();
             this.PhieuNhans = new HashSet<PhieuNhan>();
         }
     
-        public int MaPhieu { get; set; }
+        public int MaTC { get; set; }
         public string TenTC { get; set; }
         public string HinhAnh { get; set; }
-        public string MoTa { get; set; }
+        public string DacDiem { get; set; }
+        public string Loai { get; set; }
         public string MauLong { get; set; }
-        public Nullable<bool> Loai { get; set; }
-        public Nullable<double> CanNang { get; set; }
-        public string TinhTrangTruocTiepNhan { get; set; }
-        public string TinhTrangSauTiepNhan { get; set; }
+        public string CanNang { get; set; }
+        public int MaKH { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KhachHang> KhachHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuNhan> PhieuNhans { get; set; }
     }

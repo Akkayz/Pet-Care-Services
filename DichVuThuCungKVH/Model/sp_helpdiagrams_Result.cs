@@ -10,16 +10,13 @@
 namespace DichVuThuCungKVH.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CTDonDichVu
+    public partial class sp_helpdiagrams_Result
     {
-        public int MaDDV { get; set; }
-        public string DichVuDaSuDung { get; set; }
-        public Nullable<decimal> ChiPhiPhatSinh { get; set; }
-        public Nullable<decimal> ThanhTien { get; set; }
-    
-        public virtual DichVu DichVu { get; set; }
-        public virtual DonDichVu DonDichVu { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

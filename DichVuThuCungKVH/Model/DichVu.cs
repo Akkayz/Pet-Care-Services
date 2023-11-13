@@ -17,7 +17,7 @@ namespace DichVuThuCungKVH.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DichVu()
         {
-            this.PhieuNhans = new HashSet<PhieuNhan>();
+            this.CTPhieuNhan_DichVu = new HashSet<CTPhieuNhan_DichVu>();
         }
     
         public int MaDV { get; set; }
@@ -25,8 +25,7 @@ namespace DichVuThuCungKVH.Model
         public string MoTa { get; set; }
         public Nullable<decimal> Gia { get; set; }
     
-        public virtual CTDonDichVu CTDonDichVu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhieuNhan> PhieuNhans { get; set; }
+        public virtual ICollection<CTPhieuNhan_DichVu> CTPhieuNhan_DichVu { get; set; }
     }
 }

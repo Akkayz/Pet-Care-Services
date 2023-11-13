@@ -14,13 +14,26 @@ namespace DichVuThuCungKVH.Model
     
     public partial class PhieuNhan
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PhieuNhan()
+        {
+            this.CTPhieuNhan_DichVu = new HashSet<CTPhieuNhan_DichVu>();
+        }
+    
         public int MaPhieu { get; set; }
-        public int MaDV { get; set; }
+        public string TinhTrangTruocTiepNhan { get; set; }
+        public string TinhTrangSauTiepNhan { get; set; }
         public string NguoiGiao { get; set; }
         public string NguoiNhan { get; set; }
-        public Nullable<System.DateTime> ThoiGian { get; set; }
+        public Nullable<System.DateTime> NgayNhan { get; set; }
+        public string TinhTrangDichVu { get; set; }
+        public Nullable<System.DateTime> NgayTra { get; set; }
+        public string NguoiTra { get; set; }
+        public Nullable<int> MaTC { get; set; }
+        public string GhiChu { get; set; }
     
-        public virtual CTPhieuNhan CTPhieuNhan { get; set; }
-        public virtual DichVu DichVu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CTPhieuNhan_DichVu> CTPhieuNhan_DichVu { get; set; }
+        public virtual ThuCung ThuCung { get; set; }
     }
 }

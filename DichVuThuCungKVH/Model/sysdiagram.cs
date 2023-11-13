@@ -12,18 +12,12 @@ namespace DichVuThuCungKVH.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class QuanLi
+    public partial class sysdiagram
     {
-        public int MaQL { get; set; }
-        public string TenQL { get; set; }
-        public string ChucVu { get; set; }
-        public string ChiNhanh { get; set; }
-        public Nullable<int> NamSinh { get; set; }
-        public Nullable<int> SDT { get; set; }
-        public string DiaChi { get; set; }
-        public Nullable<bool> GioiTinh { get; set; }
-        public int MaTK { get; set; }
-    
-        public virtual TaiKhoan TaiKhoan { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

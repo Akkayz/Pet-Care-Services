@@ -131,6 +131,7 @@
     <Compile Include="Areas\Admin\Controllers\QuanLisController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoansController.cs" />
+    <Compile Include="Controllers\DichVuController.cs" />
     <Compile Include="Controllers\DVTCController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -138,13 +139,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Model\CTDonDichVu.cs">
-      <DependentUpon>DACS.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\CTDonHang.cs">
       <DependentUpon>DACS.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\CTPhieuNhan.cs">
+    <Compile Include="Model\CTPhieuNhan_DichVu.cs">
       <DependentUpon>DACS.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CTPhieuNhapKho.cs">
@@ -186,13 +184,22 @@
     <Compile Include="Model\PhieuNhapKho.cs">
       <DependentUpon>DACS.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\QuanLi.cs">
-      <DependentUpon>DACS.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\SanPham.cs">
       <DependentUpon>DACS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DACS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagrams_Result.cs">
+      <DependentUpon>DACS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagram.cs">
+      <DependentUpon>DACS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\TaiKhoan.cs">
+      <DependentUpon>DACS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ThuCung.cs">
       <DependentUpon>DACS.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -272,13 +279,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Model\DACS.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DACS.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model\DACS.edmx.diagram">
-      <DependentUpon>DACS.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
@@ -310,6 +310,13 @@
     <Content Include="Areas\Admin\Views\KhachHangs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHangs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHangs\Index.cshtml" />
+    <EntityDeploy Include="Model\DACS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DACS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\DACS.edmx.diagram">
+      <DependentUpon>DACS.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -343,6 +350,8 @@
     <Content Include="Views\DVTC\Slider.cshtml" />
     <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\DVTC\FormDatLich.cshtml" />
+    <Content Include="Views\DichVu\Index.cshtml" />
+    <Content Include="Views\DichVu\DVTrongGiu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -408,16 +417,16 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
