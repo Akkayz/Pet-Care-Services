@@ -186,15 +186,6 @@
     <Compile Include="Model\SanPham.cs">
       <DependentUpon>DACS.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>DACS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\sp_helpdiagrams_Result.cs">
-      <DependentUpon>DACS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\sysdiagram.cs">
-      <DependentUpon>DACS.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\TaiKhoan.cs">
       <DependentUpon>DACS.tt</DependentUpon>
     </Compile>

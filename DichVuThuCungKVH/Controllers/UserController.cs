@@ -82,7 +82,8 @@ namespace DichVuThuCungKVH.Controllers
                 TaiKhoan tk = new TaiKhoan
                 {
                     TenTK = sTenTK,
-                    MatKhau = sMatKhau
+                    MatKhau = sMatKhau,
+                    Email = sEmail
                 };
 
                 db.KhachHangs.Add(kh);

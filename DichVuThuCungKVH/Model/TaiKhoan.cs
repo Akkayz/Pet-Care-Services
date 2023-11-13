@@ -24,6 +24,7 @@ namespace DichVuThuCungKVH.Model
         public int MaTK { get; set; }
         public string TenTK { get; set; }
         public string MatKhau { get; set; }
+        public string Email { get; set; }
         public string LoaiTK { get; set; }
         public Nullable<bool> TrangThai { get; set; }
     

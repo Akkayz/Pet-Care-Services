@@ -6,24 +6,24 @@
 
 <h2>Customer Registration</h2>
 
-@using (Html.BeginForm("Register", "YourController", FormMethod.Post))
+@using (Html.BeginForm("DangKyDichVu", "DichVu", FormMethod.Post))
 {
     @Html.ValidationSummary(true)
 
     <div>
-        <label for="TenKH">Full Name:</label>
+        <label for="TenKH">Tên:</label>
         @Html.TextBoxFor(model => model.TenKH)
         @Html.ValidationMessageFor(model => model.TenKH)
     </div>
 
     <div>
-        <label for="SDT">Phone Number:</label>
+        <label for="SDT">Số Điện Thoại</label>
         @Html.TextBoxFor(model => model.SDT)
         @Html.ValidationMessageFor(model => model.SDT)
     </div>
 
     <div>
-        <label for="DiaChi">Address:</label>
+        <label for="DiaChi">Địa Chỉ:</label>
         @Html.TextBoxFor(model => model.DiaChi)
         @Html.ValidationMessageFor(model => model.DiaChi)
     </div>
@@ -32,6 +32,11 @@
         <label for="Email">Email:</label>
         @Html.TextBoxFor(model => model.Email)
         @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <div>
+        <label for="GhiChu">Notes:</label>
+        @Html.TextAreaFor(model => model.GhiChu, new { rows = 4, cols = 50 })
+        @Html.ValidationMessageFor(model => model.GhiChu)
     </div>
 
     <div>

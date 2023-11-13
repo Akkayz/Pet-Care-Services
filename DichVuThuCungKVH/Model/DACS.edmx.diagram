@@ -4,19 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6a89b859857d4f6d8ab0d75e325de693" Name="Diagram1">
-        <EntityTypeShape EntityType="DACSModel.CTDonHang" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
+      <Diagram DiagramId="f89209fe412f453992f0895ab48e7b82" Name="Diagram1">
+        <EntityTypeShape EntityType="DACSModel.CTDonHang" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DACSModel.CTPhieuNhan_DichVu" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.CTPhieuNhapKho" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.CTPhieuNhapKho" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DACSModel.DichVu" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.DonDichVu" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.DonHang" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.KhachHang" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.NhanVien" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.DonDichVu" Width="1.5" PointX="7.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.DonHang" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.KhachHang" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.NhanVien" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DACSModel.PhieuNhan" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.PhieuNhapKho" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.SanPham" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.sysdiagram" Width="1.5" PointX="9.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.PhieuNhapKho" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.SanPham" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DACSModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="DACSModel.ThuCung" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="DACSModel.FK_CTDDatHang_DonHang" ManuallyRouted="false" />

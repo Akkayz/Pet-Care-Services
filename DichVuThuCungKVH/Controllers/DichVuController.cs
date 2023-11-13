@@ -91,21 +91,30 @@ namespace DichVuThuCungKVH.Controllers
         public ActionResult DangKyDichVu()
         {
             // Populate dropdowns or perform any other necessary setup here
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
         public ActionResult DangKyDichVu(KhachHang khachHang)
         {
             // Validate and save the registration data to the database
+            khachHang.TinhTrangLienHe = false;
             if (ModelState.IsValid)
             {
                 // Save to the database
+                var existingTaiKhoan = db.TaiKhoans.FirstOrDefault(tk => tk.Email == khachHang.Email);
+
+                if (existingTaiKhoan != null)
+                {
+                    // If a matching TaiKhoan is found, link it to the KhachHang
+                    khachHang.MaTK = existingTaiKhoan.MaTK;
+                }
+                khachHang.ThoiGianDangKy = DateTime.Now;
                 db.KhachHangs.Add(khachHang);
                 db.SaveChanges();
 
                 // Redirect to a success page or another action
-                return RedirectToAction("RegistrationSuccess");
+                return RedirectToAction("DichVu","DVTC");
             }
 
             // If validation fails, return to the registration form with errors
