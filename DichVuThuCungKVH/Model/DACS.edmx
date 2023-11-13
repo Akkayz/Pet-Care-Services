@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DACSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DACSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CTDonHang">
           <Key>
             <PropertyRef Name="MaDH" />
@@ -84,6 +84,9 @@
           <Property Name="GioiTinh" Type="bit" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
           <Property Name="MaTK" Type="int" />
+          <Property Name="ThoiGianDangKy" Type="datetime" />
+          <Property Name="TinhTrangLienHe" Type="bit" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -426,8 +429,7 @@
             <End Role="PhieuNhapKho" EntitySet="PhieuNhapKho" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DACSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -523,6 +525,9 @@
           <NavigationProperty Name="DonHangs" Relationship="Self.FK_DonHang_KhachHang1" FromRole="KhachHang" ToRole="DonHang" />
           <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_KhachHang_TaiKhoan" FromRole="KhachHang" ToRole="TaiKhoan" />
           <NavigationProperty Name="ThuCung" Relationship="Self.FK_KhachHang_ThuCung" FromRole="KhachHang" ToRole="ThuCung" />
+          <Property Name="ThoiGianDangKy" Type="DateTime" Precision="3" />
+          <Property Name="TinhTrangLienHe" Type="Boolean" />
+          <Property Name="GhiChu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -966,6 +971,9 @@
           <EntitySetMapping Name="KhachHangs">
             <EntityTypeMapping TypeName="DACSModel.KhachHang">
               <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="TinhTrangLienHe" ColumnName="TinhTrangLienHe" />
+                <ScalarProperty Name="ThoiGianDangKy" ColumnName="ThoiGianDangKy" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="MaTC" ColumnName="MaTC" />
                 <ScalarProperty Name="TenKH" ColumnName="TenKH" />

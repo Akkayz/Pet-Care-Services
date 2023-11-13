@@ -10,23 +10,26 @@ namespace DichVuThuCungKVH.Controllers
     public class DichVuController : Controller
     {
         private DACSEntities db = new DACSEntities();
+
         // GET: DichVu
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpGet]
         public ActionResult DVTrongGiu()
         {
             ViewBag.MaDV = new SelectList(db.DichVus.ToList().OrderBy(n => n.TenDichVu), "MaDV", "TenDV");
             return View();
         }
+
         [HttpPost]
         public ActionResult DvTrongGiu(FormCollection collection, KhachHang kh, CTPhieuNhan_DichVu ct)
         {
             ViewBag.MaDV = new SelectList(db.DichVus.ToList().OrderBy(n => n.TenDichVu), "MaDV", "TenDV");
 
-           // ViewBag.ThongBao = "Không được để trống";
+            // ViewBag.ThongBao = "Không được để trống";
             ViewBag.TenKH = collection["sTenKH"];
             ViewBag.SDT = collection["sSDT"];
             ViewBag.Email = collection["sEmail"];
@@ -68,22 +71,45 @@ namespace DichVuThuCungKVH.Controllers
                        };
                        CTPhieuNhan_DichVu ct = new CTPhieuNhan_DichVu
                        {
-
                           DichVuSuDung = ,
                        };
             */
             kh.TenKH = collection["sTenKH"];
             kh.SDT = collection["sDienThoai"];
             kh.Email = collection["sEmail"];
-            ct.DichVuSuDung =(collection["TenDV"]);
-           // ViewBag.MaDV = new SelectList(db.DichVus.ToList().OrderBy(n => n.TenDichVu), "MaDV", "TenDV", int.Parse(collection["MaDV"]));
+            ct.DichVuSuDung = (collection["TenDV"]);
+            // ViewBag.MaDV = new SelectList(db.DichVus.ToList().OrderBy(n => n.TenDichVu), "MaDV", "TenDV", int.Parse(collection["MaDV"]));
             db.KhachHangs.Add(kh);
             db.CTPhieuNhan_DichVu.Add(ct);
             db.SaveChanges();
             return RedirectToAction("DVTrongGiu");
-        
-           // return View();
-         }
 
+            // return View();
+        }
+
+        [HttpGet]
+        public ActionResult DangKyDichVu()
+        {
+            // Populate dropdowns or perform any other necessary setup here
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DangKyDichVu(KhachHang khachHang)
+        {
+            // Validate and save the registration data to the database
+            if (ModelState.IsValid)
+            {
+                // Save to the database
+                db.KhachHangs.Add(khachHang);
+                db.SaveChanges();
+
+                // Redirect to a success page or another action
+                return RedirectToAction("RegistrationSuccess");
+            }
+
+            // If validation fails, return to the registration form with errors
+            return View(khachHang);
+        }
     }
 }

@@ -1,0 +1,40 @@
+﻿@model DichVuThuCungKVH.Model.KhachHang
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Customer Registration</h2>
+
+@using (Html.BeginForm("Register", "YourController", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    <div>
+        <label for="TenKH">Full Name:</label>
+        @Html.TextBoxFor(model => model.TenKH)
+        @Html.ValidationMessageFor(model => model.TenKH)
+    </div>
+
+    <div>
+        <label for="SDT">Phone Number:</label>
+        @Html.TextBoxFor(model => model.SDT)
+        @Html.ValidationMessageFor(model => model.SDT)
+    </div>
+
+    <div>
+        <label for="DiaChi">Address:</label>
+        @Html.TextBoxFor(model => model.DiaChi)
+        @Html.ValidationMessageFor(model => model.DiaChi)
+    </div>
+
+    <div>
+        <label for="Email">Email:</label>
+        @Html.TextBoxFor(model => model.Email)
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+
+    <div>
+        <input type="submit" value="DangKy" />
+    </div>
+}

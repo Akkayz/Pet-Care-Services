@@ -351,6 +351,7 @@
     <Content Include="Views\DVTC\FormDatLich.cshtml" />
     <Content Include="Views\DichVu\Index.cshtml" />
     <Content Include="Views\DichVu\DVTrongGiu.cshtml" />
+    <Content Include="Views\DichVu\DangKyDichVu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

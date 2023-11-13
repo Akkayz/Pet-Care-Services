@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "DichVu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -91,7 +90,6 @@
                                 </a>
                             </div>
                         </div>
-
 
                         <div id="content">
                             <div id="table-content-wrap" class="content-table ">
@@ -239,7 +237,6 @@
                                 <p><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;"><span style="color: rgb(226, 80, 65);"></span></span></p><br><p></p>
                             </div>
                         </div>
-
                     </article>
                 </div>
                 <div class="col-md-4 hidden-xs">
@@ -321,7 +318,7 @@
                             </div>
                         </div>
                     </aside>
-
+                    @Html.Action("DangKyDichVu", "DichVu")
                 </div>
             </div>
         </div>
