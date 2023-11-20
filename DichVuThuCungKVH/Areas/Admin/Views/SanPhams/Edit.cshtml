@@ -7,10 +7,10 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "SanPhams", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>SanPham</h4>
         <hr />
@@ -28,8 +28,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Anh, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Anh, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Anh, "", new { @class = "text-danger" })
+                @if (!string.IsNullOrEmpty(Model.Anh))
+                {
+                    <img src="~/Images/SanPham/@Model.Anh?timestamp=@DateTime.Now.Ticks" alt="Current Image" style="max-width: 200px; max-height: 200px;" />
+                }
+
+                <input type="file" name="imageFile" id="imageFile" />
+                @Html.ValidationMessage("imageFile", "", new { @class = "text-danger" })
             </div>
         </div>
 
