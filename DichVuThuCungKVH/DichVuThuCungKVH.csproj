@@ -301,16 +301,16 @@
     <Content Include="Model\DACS.edmx.diagram">
       <DependentUpon>DACS.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\NhanViens\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanViens\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanViens\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanViens\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanViens\Index.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHangs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHangs\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHangs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHangs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHangs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanViens\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanViens\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanViens\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanViens\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanViens\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -352,6 +352,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Default\" />
+    <Folder Include="Views\NhanVien\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

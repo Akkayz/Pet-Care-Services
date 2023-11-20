@@ -25,7 +25,7 @@ namespace DichVuThuCungKVH.Model
         public string TenNV { get; set; }
         public string ChucVu { get; set; }
         public string ChiNhanh { get; set; }
-        public Nullable<int> NgaySinh { get; set; }
+        public Nullable<System.DateTime> NgaySinh { get; set; }
         public string SDT { get; set; }
         public string DiaChi { get; set; }
         public Nullable<bool> GioiTinh { get; set; }

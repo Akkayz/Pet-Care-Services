@@ -24,10 +24,10 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Login(string UserName, string Password)
         {
-            TaiKhoan ad = db.TaiKhoans.SingleOrDefault(n => n.TenTK == UserName && n.MatKhau == Password && n.LoaiTK == "1");
-            if (ad != null)
+            TaiKhoan user = db.TaiKhoans.SingleOrDefault(n => n.TenTK == UserName && n.MatKhau == Password);
+            if (user != null)
             {
-                Session["Admin"] = ad;
+                Session["UserType"] = user.LoaiTK;
                 return RedirectToAction("Index");
             }
             else
