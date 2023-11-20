@@ -1,8 +1,12 @@
-﻿using DichVuThuCungKVH.Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using DichVuThuCungKVH.Model;
 
 namespace DichVuThuCungKVH.Areas.Admin.Controllers
 {
@@ -13,7 +17,7 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
         // GET: Admin/KhachHangs
         public ActionResult Index()
         {
-            var khachHangs = db.KhachHangs.Include(k => k.TaiKhoan).Include(k => k.TaiKhoan);
+            var khachHangs = db.KhachHangs.Include(k => k.TaiKhoan);
             return View(khachHangs.ToList());
         }
 
@@ -36,16 +40,15 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.MaTK = new SelectList(db.TaiKhoans, "MaTK", "TenTK");
-            ViewBag.MaTK = new SelectList(db.TaiKhoans, "MaTK", "TenTK");
             return View();
         }
 
         // POST: Admin/KhachHangs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaKH,TenKH,NgaySinh,SDT,DiaChi,GioiTinh,Email,MaTK")] KhachHang khachHang)
+        public ActionResult Create([Bind(Include = "MaKH,TenKH,NgaySinh,SDT,DiaChi,GioiTinh,Email,MaTK,ThoiGianDangKy,TinhTrangLienHe,GhiChu")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
@@ -54,7 +57,6 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaTK = new SelectList(db.TaiKhoans, "MaTK", "TenTK", khachHang.MaTK);
             ViewBag.MaTK = new SelectList(db.TaiKhoans, "MaTK", "TenTK", khachHang.MaTK);
             return View(khachHang);
         }
@@ -72,16 +74,15 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             ViewBag.MaTK = new SelectList(db.TaiKhoans, "MaTK", "TenTK", khachHang.MaTK);
-            ViewBag.MaTK = new SelectList(db.TaiKhoans, "MaTK", "TenTK", khachHang.MaTK);
             return View(khachHang);
         }
 
         // POST: Admin/KhachHangs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaKH,TenKH,NgaySinh,SDT,DiaChi,GioiTinh,Email,MaTK")] KhachHang khachHang)
+        public ActionResult Edit([Bind(Include = "MaKH,TenKH,NgaySinh,SDT,DiaChi,GioiTinh,Email,MaTK,ThoiGianDangKy,TinhTrangLienHe,GhiChu")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +90,6 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaTK = new SelectList(db.TaiKhoans, "MaTK", "TenTK", khachHang.MaTK);
             ViewBag.MaTK = new SelectList(db.TaiKhoans, "MaTK", "TenTK", khachHang.MaTK);
             return View(khachHang);
         }

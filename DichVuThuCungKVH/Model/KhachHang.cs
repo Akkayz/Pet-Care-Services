@@ -18,10 +18,11 @@ namespace DichVuThuCungKVH.Model
         public KhachHang()
         {
             this.DonHangs = new HashSet<DonHang>();
+            this.SuDungDichVus = new HashSet<SuDungDichVu>();
+            this.ThuCungs = new HashSet<ThuCung>();
         }
     
         public int MaKH { get; set; }
-        public Nullable<int> MaTC { get; set; }
         public string TenKH { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public string SDT { get; set; }
@@ -36,6 +37,9 @@ namespace DichVuThuCungKVH.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }
         public virtual TaiKhoan TaiKhoan { get; set; }
-        public virtual ThuCung ThuCung { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SuDungDichVu> SuDungDichVus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThuCung> ThuCungs { get; set; }
     }
 }

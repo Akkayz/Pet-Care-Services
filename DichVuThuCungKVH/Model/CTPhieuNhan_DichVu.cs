@@ -20,7 +20,7 @@ namespace DichVuThuCungKVH.Model
         public string NguoiThucHien { get; set; }
         public Nullable<System.DateTime> ThoiGian { get; set; }
         public Nullable<int> SoLuong { get; set; }
-        public Nullable<decimal> ThanhTien { get; set; }
+        public Nullable<decimal> DonGia { get; set; }
         public string GhiChu { get; set; }
     
         public virtual DichVu DichVu { get; set; }

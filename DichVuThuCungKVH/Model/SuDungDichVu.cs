@@ -12,22 +12,18 @@ namespace DichVuThuCungKVH.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ThuCung
+    public partial class SuDungDichVu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ThuCung()
+        public SuDungDichVu()
         {
             this.PhieuNhans = new HashSet<PhieuNhan>();
         }
     
-        public int MaTC { get; set; }
-        public int MaKH { get; set; }
-        public string TenTC { get; set; }
-        public string HinhAnh { get; set; }
-        public string DacDiem { get; set; }
-        public string Loai { get; set; }
-        public string MauLong { get; set; }
-        public string CanNang { get; set; }
+        public int MaSDDV { get; set; }
+        public Nullable<int> MaKH { get; set; }
+        public Nullable<System.DateTime> Ngay { get; set; }
+        public string GhiChu { get; set; }
     
         public virtual KhachHang KhachHang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

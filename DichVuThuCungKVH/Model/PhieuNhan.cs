@@ -21,6 +21,8 @@ namespace DichVuThuCungKVH.Model
         }
     
         public int MaPhieu { get; set; }
+        public Nullable<int> MaTC { get; set; }
+        public Nullable<int> MaSDDV { get; set; }
         public string TinhTrangTruocTiepNhan { get; set; }
         public string TinhTrangSauTiepNhan { get; set; }
         public string NguoiGiao { get; set; }
@@ -29,11 +31,11 @@ namespace DichVuThuCungKVH.Model
         public string TinhTrangDichVu { get; set; }
         public Nullable<System.DateTime> NgayTra { get; set; }
         public string NguoiTra { get; set; }
-        public Nullable<int> MaTC { get; set; }
         public string GhiChu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTPhieuNhan_DichVu> CTPhieuNhan_DichVu { get; set; }
+        public virtual SuDungDichVu SuDungDichVu { get; set; }
         public virtual ThuCung ThuCung { get; set; }
     }
 }
