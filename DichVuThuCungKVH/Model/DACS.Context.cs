@@ -38,7 +38,6 @@ namespace DichVuThuCungKVH.Model
         public virtual DbSet<PhieuNhapKho> PhieuNhapKhoes { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<SuDungDichVu> SuDungDichVus { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<ThuCung> ThuCungs { get; set; }
     

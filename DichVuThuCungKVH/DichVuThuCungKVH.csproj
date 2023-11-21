@@ -133,6 +133,7 @@
     <Compile Include="Areas\Admin\Controllers\NhanViensController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoansController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThuCungsController.cs" />
     <Compile Include="Controllers\DichVuController.cs" />
     <Compile Include="Controllers\DVTCController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
@@ -193,9 +194,6 @@
       <DependentUpon>DACS.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SuDungDichVu.cs">
-      <DependentUpon>DACS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\sysdiagram.cs">
       <DependentUpon>DACS.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TaiKhoan.cs">
@@ -262,6 +260,8 @@
     <Content Include="Images\Slider\petshop.jpg" />
     <Content Include="Images\Slider\petspa.jpg" />
     <Content Include="Images\thoi-trangjpg.jpg" />
+    <Content Include="Images\ThuCung\Cat1.jpg" />
+    <Content Include="Images\ThuCung\dog1.jpg" />
     <Content Include="Model\DACS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DACS.edmx</DependentUpon>
@@ -306,11 +306,15 @@
     <Content Include="Areas\Admin\Views\KhachHangs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHangs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\KhachHangs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuCungs\ThuCungCuaKhachHang.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuCungs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuCungs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens\Create.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens\Details.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ThuCungs\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

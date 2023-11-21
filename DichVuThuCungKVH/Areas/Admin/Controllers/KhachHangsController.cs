@@ -128,5 +128,18 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult ThuCung(int id)
+        {
+            // Lấy thông tin khách hàng và thú cưng của khách hàng
+            var khachHang = db.KhachHangs.Include(kh => kh.ThuCungs).SingleOrDefault(kh => kh.MaKH == id);
+
+            if (khachHang == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(khachHang);
+        }
     }
 }

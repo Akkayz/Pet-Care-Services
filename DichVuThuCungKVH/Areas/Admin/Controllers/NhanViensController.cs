@@ -44,7 +44,7 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
         }
 
         // POST: Admin/NhanViens/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -78,7 +78,7 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
         }
 
         // POST: Admin/NhanViens/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

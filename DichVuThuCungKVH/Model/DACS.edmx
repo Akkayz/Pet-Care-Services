@@ -138,16 +138,6 @@
           <Property Name="Ngay" Type="datetime" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="500" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
             <PropertyRef Name="MaTK" />
@@ -166,7 +156,7 @@
           <Property Name="MaTC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaKH" Type="int" Nullable="false" />
           <Property Name="TenTC" Type="nvarchar" MaxLength="50" />
-          <Property Name="HinhAnh" Type="nchar" MaxLength="10" />
+          <Property Name="HinhAnh" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DacDiem" Type="nvarchar" MaxLength="100" />
           <Property Name="Loai" Type="nchar" MaxLength="10" />
           <Property Name="MauLong" Type="nvarchar" MaxLength="50" />
@@ -395,7 +385,6 @@
           <EntitySet Name="PhieuNhapKho" EntityType="Self.PhieuNhapKho" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuDungDichVu" EntityType="Self.SuDungDichVu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThuCung" EntityType="Self.ThuCung" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CTDDatHang_DonHang" Association="Self.FK_CTDDatHang_DonHang">
@@ -505,7 +494,6 @@
           <EntitySet Name="PhieuNhapKhoes" EntityType="DACSModel.PhieuNhapKho" />
           <EntitySet Name="SanPhams" EntityType="DACSModel.SanPham" />
           <EntitySet Name="SuDungDichVus" EntityType="DACSModel.SuDungDichVu" />
-          <EntitySet Name="sysdiagrams" EntityType="DACSModel.sysdiagram" />
           <EntitySet Name="TaiKhoans" EntityType="DACSModel.TaiKhoan" />
           <EntitySet Name="ThuCungs" EntityType="DACSModel.ThuCung" />
           <AssociationSet Name="FK_CTDDatHang_DonHang" Association="DACSModel.FK_CTDDatHang_DonHang">
@@ -568,7 +556,7 @@
             <End Role="ThuCung" EntitySet="ThuCungs" />
             <End Role="PhieuNhan" EntitySet="PhieuNhans" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -739,16 +727,6 @@
           <NavigationProperty Name="KhachHang" Relationship="DACSModel.FK_SuDungDichVu_KhachHang" FromRole="SuDungDichVu" ToRole="KhachHang" />
           <NavigationProperty Name="PhieuNhans" Relationship="DACSModel.FK_PhieuNhan_SuDungDichVu" FromRole="SuDungDichVu" ToRole="PhieuNhan" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
             <PropertyRef Name="MaTK" />
@@ -769,7 +747,7 @@
           <Property Name="MaTC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaKH" Type="Int32" Nullable="false" />
           <Property Name="TenTC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="HinhAnh" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="HinhAnh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DacDiem" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Loai" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="MauLong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -957,7 +935,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1128,17 +1106,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DACSModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TaiKhoans">
             <EntityTypeMapping TypeName="DACSModel.TaiKhoan">
               <MappingFragment StoreEntitySet="TaiKhoan">
@@ -1165,7 +1132,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
