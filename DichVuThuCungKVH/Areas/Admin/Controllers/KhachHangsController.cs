@@ -12,7 +12,7 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
 {
     public class KhachHangsController : Controller
     {
-        private DACSEntities db = new DACSEntities();
+        private readonly DACSEntities db = new DACSEntities();
 
         // GET: Admin/KhachHangs
         public ActionResult Index()
