@@ -24,7 +24,7 @@
                                     <div class="price">@sanPham.GiaBan</div>
                                 </h4>
                             </a>
-                            <a onclick="add_to_cart(this);" link_add_to_cart="" class="btn btn-danger btn-custom-product-add " data-id="@sanPham.MaSP">
+                            <a href="@Url.Action("ThemGioHang","GioHang", new { ms = sanPham.MaSP, url = Request.Url.ToString() })"onclick="add_to_cart(this);" link_add_to_cart="" class="btn btn-danger btn-custom-product-add " data-id="@sanPham.MaSP">
                                 <i class="glyphicon glyphicon-shopping-cart"></i> Chọn mua
                             </a>
                         </div>

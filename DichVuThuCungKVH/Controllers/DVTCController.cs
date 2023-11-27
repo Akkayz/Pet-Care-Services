@@ -26,7 +26,7 @@ namespace DichVuThuCung.Controllers
 
         public ActionResult SanPhamPartial()
         {
-            var listSanPham = (from cd in db.SanPhams select cd).ToList();
+            var listSanPham = (from cd in db.SanPhams select cd ).ToList();
             return PartialView(listSanPham);
         }
 

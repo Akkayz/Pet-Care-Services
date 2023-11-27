@@ -169,6 +169,7 @@
     <Compile Include="Model\DonHang.cs">
       <DependentUpon>DACS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\GioHang.cs" />
     <Compile Include="Model\KhachHang.cs">
       <DependentUpon>DACS.tt</DependentUpon>
     </Compile>
@@ -348,6 +349,9 @@
     <Content Include="Views\DichVu\Index.cshtml" />
     <Content Include="Views\DichVu\DVTrongGiu.cshtml" />
     <Content Include="Views\DichVu\DangKyDichVu.cshtml" />
+    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\XacNhanDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
