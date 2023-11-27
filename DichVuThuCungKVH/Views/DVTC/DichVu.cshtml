@@ -4,6 +4,7 @@
 }
 
 <section>
+    
     <div class="main-wrap">
         <div class="container">
             <div class="row hidden-xs">
@@ -307,6 +308,13 @@
                             </div>
                         </div>
                     </aside>
+                    <div class="container mt-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                @Html.Action("DangKyDichVu", "DichVu")
+                            </div>
+                        </div>
+                    </div>
                     <aside class="panel panel-inverse hidden-xs">
                         <div class="panel-heading text-center"><h3>Tin xem nhiều</h3><hr class="underline-title"></div>
                         <div class="panel-body">
@@ -318,7 +326,7 @@
                             </div>
                         </div>
                     </aside>
-                    @Html.Action("DangKyDichVu", "DichVu")
+
                 </div>
             </div>
         </div>
