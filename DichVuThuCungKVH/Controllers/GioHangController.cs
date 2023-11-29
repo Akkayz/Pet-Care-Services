@@ -11,12 +11,13 @@ namespace DichVuThuCungKVH.Controllers
     {
         private DACSEntities db = new DACSEntities();
         // GET: GioHang
+        
         public ActionResult GioHang()
         {
             List<GioHang> lstGioHang = LayGioHang();
             if (lstGioHang.Count == 0)
             {
-                return RedirectToAction("Index", "DVTC");
+                ViewBag.GioHangTrong = "Giỏ hàng bạn đang trống!";
             }
 
             ViewBag.TongSoLuong = TongSoLuong();
@@ -35,9 +36,9 @@ namespace DichVuThuCungKVH.Controllers
         }
         public ActionResult ThemGioHang(int ms, string url)
         {
-            //Lấy giỏ hàng hiện tại
+            //Lay gio hang hien tai
             List<GioHang> lstGioHang = LayGioHang();
-            GioHang sp = lstGioHang.Find(n => n.iMaSP == ms);
+            GioHang sp = lstGioHang.Find(n => n.iMaSanPham == ms);
             if (sp == null)
             {
                 sp = new GioHang(ms);
@@ -47,7 +48,6 @@ namespace DichVuThuCungKVH.Controllers
             {
                 sp.iSoLuong++;
             }
-
             return Redirect(url);
         }
         private int TongSoLuong()
@@ -66,7 +66,7 @@ namespace DichVuThuCungKVH.Controllers
             double dTongTien = 0;
             List<GioHang> lstGioHang = Session["GioHang"] as List<GioHang>; if (lstGioHang != null)
             {
-                dTongTien = lstGioHang.Sum(n => n.dTongThanhTien);
+                dTongTien = lstGioHang.Sum(n => n.dThanhTien);
             }
 
             return dTongTien;
@@ -84,24 +84,25 @@ namespace DichVuThuCungKVH.Controllers
         {
             List<GioHang> lstGioHang = LayGioHang();
 
-            //Kiem tra Sach da co trong Session["GioHang"]
-            GioHang sp = lstGioHang.SingleOrDefault(n => n.iMaSP == iMaSP);
+            // Kiểm tra sản phẩm có trong Session["GioHang"] không
+            GioHang sp = lstGioHang.SingleOrDefault(n => n.iMaSanPham == iMaSP);
             if (sp != null)
             {
-                lstGioHang.RemoveAll(n => n.iMaSP == iMaSP);
+                // Xóa sản phẩm cụ thể khỏi giỏ hàng
+                lstGioHang.Remove(sp);
+
                 if (lstGioHang.Count == 0)
                 {
                     return RedirectToAction("Index", "DVTC");
                 }
             }
+
             return RedirectToAction("GioHang");
-
-
         }
         public ActionResult CapNhatGioHang(int iMaSP, FormCollection f)
         {
             List<GioHang> lstGioHang = LayGioHang();
-            GioHang sp = lstGioHang.SingleOrDefault(n => n.iMaSP == iMaSP); //Nếu tồn tại thì cho sửa số lượng
+            GioHang sp = lstGioHang.SingleOrDefault(n => n.iMaSanPham == iMaSP); //Nếu tồn tại thì cho sửa số lượng
             if (sp != null)
             {
 
@@ -156,7 +157,7 @@ namespace DichVuThuCungKVH.Controllers
             {
                 CTDonHang ctdh = new CTDonHang();
                 ctdh.MaDH = ddh.MaDH;
-                ctdh.MaSP = item.iMaSP;
+                ctdh.MaSP = item.iMaSanPham;
                 ctdh.SoLuong = item.iSoLuong;
                 ctdh.DonGia = (decimal)item.dDonGia;
                 // db.CTDonHangs.InsertOnSubmit(ctdh);

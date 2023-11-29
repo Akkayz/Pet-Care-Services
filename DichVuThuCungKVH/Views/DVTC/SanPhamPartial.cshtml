@@ -24,8 +24,8 @@
                                     <div class="price">@sanPham.GiaBan</div>
                                 </h4>
                             </a>
-                            <a href="@Url.Action("ThemGioHang","GioHang", new { ms = sanPham.MaSP, url = Request.Url.ToString() })"onclick="add_to_cart(this);" link_add_to_cart="" class="btn btn-danger btn-custom-product-add " data-id="@sanPham.MaSP">
-                                <i class="glyphicon glyphicon-shopping-cart"></i> Chọn mua
+                            <a href="@Url.Action("ThemGioHang","GioHang", new { ms = sanPham.MaSP, url = Request.Url.ToString() })" class="btn btn-danger btn-custom-product-add" onclick="add_to_cart(this);" data-id="@sanPham.MaSP">
+                                Chọn mua
                             </a>
                         </div>
                     </div>
@@ -33,3 +33,19 @@
         </div>
     </section>
 </div>
+<style>
+    .btn-custom-product-add {
+        background-color: #3498db; /* Màu nền của nút */
+        color: #fff; /* Màu chữ của nút */
+        padding: 8px 15px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-custom-product-add:hover {
+            background-color: #2980b9; /* Màu nền của nút khi di chuột vào */
+        }
+</style>
