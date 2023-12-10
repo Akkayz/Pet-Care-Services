@@ -151,7 +151,7 @@ namespace DichVuThuCungKVH.Controllers
 
         [HttpPost]
         public ActionResult DatHang(FormCollection f)
-        {
+                       {
             DonHang ddh = new DonHang();
             var maTaiKhoan = Convert.ToInt32(Session["MaTaiKhoan"].ToString());
             var kh = db.KhachHangs.SingleOrDefault(n => n.MaTK == maTaiKhoan);

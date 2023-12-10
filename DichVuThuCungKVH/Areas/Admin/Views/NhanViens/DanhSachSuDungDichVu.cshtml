@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "DanhSachSuDungDichVu";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model IEnumerable<DichVuThuCungKVH.Model.PhieuNhan>
+
+<h2>Danh sách sử dụng dịch vụ</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã phiếu nhận</th>
+            <th>Mã đơn thú cưng</th>
+            <th>Mã đơn dịch vụ</th>
+            <th>Tình trạng trước tiếp nhận</th>
+            <th>Tình trạng sau tiếp nhận</th>
+            <th>Người giao</th>
+            <th>Người nhận</th>
+            <th>Ngày nhận</th>
+            <th>Tình trạng dịch vụ</th>
+            <th>Ngày trả</th>
+            <th>Người trả</th>
+            <th>Ghi chú</th>
+            <!-- Thêm các cột khác cần hiển thị -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var phieuNhan in Model)
+        {
+            <tr>
+                <td>@phieuNhan.MaPhieu</td>
+                <td>@phieuNhan.MaTC</td>
+                <td>@phieuNhan.MaSDDV</td>
+                <td><img src="~/Images/ThuCung/@phieuNhan.TinhTrangTruocTiepNhan" alt="Ảnh trước tiếp nhận" width="100" height="100" /></td>
+                <td><img src="~/Images/ThuCung/@phieuNhan.TinhTrangSauTiepNhan" alt="Ảnh trước tiếp nhận" width="100" height="100" /></td>
+                <td>@phieuNhan.NguoiGiao</td>
+                <td>@phieuNhan.NguoiNhan</td>
+                <td>@phieuNhan.NgayNhan</td>
+                <td>@phieuNhan.TinhTrangDichVu</td>
+                <td>@phieuNhan.NgayTra</td>
+                <td>@phieuNhan.NguoiTra</td>
+                <td>@phieuNhan.GhiChu</td>
+                <td>
+                    <a href="@Url.Action("ChinhSuaPhieuNhan", "NhanViens", new { id = phieuNhan.MaPhieu })">Chỉnh sửa</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("XoaPhieuNhan", "NhanViens", new { id = phieuNhan.MaPhieu })">Xóa</a>
+                </td>
+                <!-- Thêm các cột khác tương ứng -->
+            </tr>
+        }
+    </tbody>
+</table>
