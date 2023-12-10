@@ -1,6 +1,9 @@
 ﻿using DichVuThuCungKVH.Model;
 using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace DichVuThuCungKVH.Controllers
@@ -82,8 +85,7 @@ namespace DichVuThuCungKVH.Controllers
                 TaiKhoan tk = new TaiKhoan
                 {
                     TenTK = sTenTK,
-                    MatKhau = sMatKhau,
-                    Email = sEmail
+                    MatKhau = sMatKhau
                 };
 
                 db.KhachHangs.Add(kh);
@@ -103,6 +105,8 @@ namespace DichVuThuCungKVH.Controllers
         [HttpPost]
         public ActionResult DangNhap(FormCollection collection)
         {
+
+
             var sTenDN = collection["TenDN"];
             var sMatKhau = collection["Matkhau"];
             if (String.IsNullOrEmpty(sTenDN))
@@ -115,25 +119,25 @@ namespace DichVuThuCungKVH.Controllers
             }
             else
             {
+
                 TaiKhoan tk = db.TaiKhoans.SingleOrDefault(n => n.TenTK == sTenDN && n.MatKhau == sMatKhau);
                 if (tk != null)
                 {
-                    Session["TaiKhoan"] = sTenDN;
-
-                    string returnUrl = Session["ReturnUrl"] as string;
-                    if (!string.IsNullOrEmpty(returnUrl))
-                    {
-                        Session["ReturnUrl"] = null;
-                        return Redirect(returnUrl);
-                    }
-                    return RedirectToAction("Index", "SachOnline");
+                    ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
+                    Session["TaiKhoan"] = tk;
+                    Session["MaTaiKhoan"] = tk.MaTK;
+                    return RedirectToAction("Index", "DVTC");
                 }
+
                 else
                 {
                     ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
                 }
+
             }
             return View();
+
+
         }
     }
 }
