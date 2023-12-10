@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,9 +48,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("Index", "PhieuNhans")">Quản lý phiếu nhận</a>
                         </li>
-                        <li >
-                        <a class="nav-link" href="@Url.Action("DonHangDaDat", "NhanViens")">Quản Lý Đơn Hàng</a>
-                       </li>
+                        <li>
+                            <a class="nav-link" href="@Url.Action("DonHangDaDat", "NhanViens")">Quản Lý Đơn Hàng</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("DanhSachSuDungDichVu", "NhanViens")">Quản Lý Đơn Dịch Vụ</a>
                         </li>

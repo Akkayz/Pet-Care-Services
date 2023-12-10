@@ -5,103 +5,60 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<div class="container mt-5">
+    <h2 class="mb-4">Details</h2>
 
-<div>
-    <h4>PhieuNhan</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TinhTrangTruocTiepNhan)
-        </dt>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">PhieuNhan</h4>
+            <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.TinhTrangTruocTiepNhan)
-        </dd>
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.TinhTrangTruocTiepNhan)</dt>
+                <dd class="col-sm-9">
+                    @if (!string.IsNullOrEmpty(Model.TinhTrangTruocTiepNhan))
+                    {
+                        <img src="@Url.Content("~/Images/TinhTrangTruocTiepNhan/" + Model.TinhTrangTruocTiepNhan)" alt="Image" class="img-thumbnail" />
+                    }
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TinhTrangSauTiepNhan)
-        </dt>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.TinhTrangSauTiepNhan)</dt>
+                <dd class="col-sm-9">
+                    @if (!string.IsNullOrEmpty(Model.TinhTrangSauTiepNhan))
+                    {
+                        <img src="@Url.Content("~/Images/TinhTrangSauTiepNhan/" + Model.TinhTrangSauTiepNhan)" alt="Image" class="img-thumbnail" />
+                    }
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TinhTrangSauTiepNhan)
-        </dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.NguoiGiao)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.NguoiGiao)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NguoiGiao)
-        </dt>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.NguoiNhan)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.NguoiNhan)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NguoiGiao)
-        </dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.NgayNhan)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.NgayNhan)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NguoiNhan)
-        </dt>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.TinhTrangDichVu)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.TinhTrangDichVu)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NguoiNhan)
-        </dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.NgayTra)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.NgayTra)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayNhan)
-        </dt>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.NguoiTra)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.NguoiTra)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayNhan)
-        </dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.GhiChu)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.GhiChu)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TinhTrangDichVu)
-        </dt>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ThuCung.TenTC)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.ThuCung.TenTC)</dd>
+            </dl>
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.TinhTrangDichVu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayTra)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayTra)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NguoiTra)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NguoiTra)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GhiChu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GhiChu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SuDungDichVu.GhiChu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SuDungDichVu.GhiChu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThuCung.TenTC)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThuCung.TenTC)
-        </dd>
-
-    </dl>
+    <div class="mt-3">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaPhieu }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-secondary" })
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaPhieu }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

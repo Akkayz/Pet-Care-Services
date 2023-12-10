@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -38,10 +39,28 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PhieuNhan phieuNhan)
+        public ActionResult Create(PhieuNhan phieuNhan, HttpPostedFileBase fileTinhTrangTruocTiepNhan, HttpPostedFileBase fileTinhTrangSauTiepNhan)
         {
             if (ModelState.IsValid)
             {
+                // Xử lý file ảnh TinhTrangTruocTiepNhan
+                if (fileTinhTrangTruocTiepNhan != null && fileTinhTrangTruocTiepNhan.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(fileTinhTrangTruocTiepNhan.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/TinhTrangTruocTiepNhan/"), fileName);
+                    fileTinhTrangTruocTiepNhan.SaveAs(path);
+                    phieuNhan.TinhTrangTruocTiepNhan = fileName;
+                }
+
+                // Xử lý file ảnh TinhTrangSauTiepNhan
+                if (fileTinhTrangSauTiepNhan != null && fileTinhTrangSauTiepNhan.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(fileTinhTrangSauTiepNhan.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/TinhTrangSauTiepNhan/"), fileName);
+                    fileTinhTrangSauTiepNhan.SaveAs(path);
+                    phieuNhan.TinhTrangSauTiepNhan = fileName;
+                }
+
                 db.PhieuNhans.Add(phieuNhan);
                 db.SaveChanges();
 
