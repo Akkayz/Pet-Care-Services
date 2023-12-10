@@ -21,21 +21,6 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
             return View(phieuNhans.ToList());
         }
 
-        // GET: Admin/PhieuNhans/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PhieuNhan phieuNhan = db.PhieuNhans.Find(id);
-            if (phieuNhan == null)
-            {
-                return HttpNotFound();
-            }
-            return View(phieuNhan);
-        }
-
         public ActionResult Create(int? maSDDV)
         {
             if (maSDDV == null)
@@ -44,30 +29,43 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
             }
 
             ViewBag.MaSDDV = maSDDV;
+
+            // Use SelectListItems to populate dropdown lists
             ViewBag.MaTC = new SelectList(db.ThuCungs, "MaTC", "TenTC");
+
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaPhieu,MaTC,MaSDDV,TinhTrangTruocTiepNhan,TinhTrangSauTiepNhan,NguoiGiao,NguoiNhan,NgayNhan,TinhTrangDichVu,NgayTra,NguoiTra,GhiChu")] PhieuNhan phieuNhan, int? maSDDV)
+        public ActionResult Create(PhieuNhan phieuNhan)
         {
-            if (maSDDV == null)
+            if (ModelState.IsValid)
+            {
+                db.PhieuNhans.Add(phieuNhan);
+                db.SaveChanges();
+
+                return RedirectToAction("PhieuCuaLuotSDDV", new { id = phieuNhan.MaSDDV });
+            }
+
+            ViewBag.MaSDDV = phieuNhan.MaSDDV;
+            ViewBag.MaTC = new SelectList(db.ThuCungs, "MaTC", "TenTC", phieuNhan.MaTC);
+            return View(phieuNhan);
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            if (ModelState.IsValid)
+            PhieuNhan phieuNhan = db.PhieuNhans.Find(id);
+            if (phieuNhan == null)
             {
-                // Code lưu thông tin PhieuNhan vào cơ sở dữ liệu
-                db.PhieuNhans.Add(phieuNhan);
-                db.SaveChanges();
-
-                return RedirectToAction("Details", new { id = phieuNhan.MaPhieu });
+                return HttpNotFound();
             }
 
-            ViewBag.MaSDDV = new SelectList(db.SuDungDichVus, "MaSDDV", "GhiChu", phieuNhan.MaSDDV);
-            ViewBag.MaTC = new SelectList(db.ThuCungs, "MaTC", "TenTC", phieuNhan.MaTC);
             return View(phieuNhan);
         }
 
@@ -77,29 +75,29 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             PhieuNhan phieuNhan = db.PhieuNhans.Find(id);
             if (phieuNhan == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaSDDV = new SelectList(db.SuDungDichVus, "MaSDDV", "GhiChu", phieuNhan.MaSDDV);
+
             ViewBag.MaTC = new SelectList(db.ThuCungs, "MaTC", "TenTC", phieuNhan.MaTC);
             return View(phieuNhan);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaPhieu,MaTC,MaSDDV,TinhTrangTruocTiepNhan,TinhTrangSauTiepNhan,NguoiGiao,NguoiNhan,NgayNhan,TinhTrangDichVu,NgayTra,NguoiTra,GhiChu")] PhieuNhan phieuNhan)
+        public ActionResult Edit(PhieuNhan phieuNhan)
         {
             if (ModelState.IsValid)
             {
-                // Your logic to update the edited PhieuNhan
-                // ...
+                db.Entry(phieuNhan).State = EntityState.Modified;
+                db.SaveChanges();
 
-                return RedirectToAction("Details", new { id = phieuNhan.MaPhieu });
+                return RedirectToAction("PhieuCuaLuotSDDV", new { id = phieuNhan.MaSDDV });
             }
 
-            ViewBag.MaSDDV = new SelectList(db.SuDungDichVus, "MaSDDV", "GhiChu", phieuNhan.MaSDDV);
             ViewBag.MaTC = new SelectList(db.ThuCungs, "MaTC", "TenTC", phieuNhan.MaTC);
             return View(phieuNhan);
         }
@@ -110,11 +108,13 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             PhieuNhan phieuNhan = db.PhieuNhans.Find(id);
             if (phieuNhan == null)
             {
                 return HttpNotFound();
             }
+
             return View(phieuNhan);
         }
 
@@ -125,16 +125,8 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
             PhieuNhan phieuNhan = db.PhieuNhans.Find(id);
             db.PhieuNhans.Remove(phieuNhan);
             db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return RedirectToAction("PhieuCuaLuotSDDV", new { id = phieuNhan.MaSDDV });
         }
 
         public ActionResult PhieuCuaLuotSDDV(int? id)
@@ -144,14 +136,8 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            // Find the service usage with the provided ID
-            SuDungDichVu suDungDichVu = db.SuDungDichVus.Find(id);
-            if (suDungDichVu == null)
-            {
-                return HttpNotFound();
-            }
+            ViewBag.MaSDDV = id;
 
-            // Retrieve and return the list of receiving vouchers associated with this service usage
             var phieuNhans = db.PhieuNhans.Where(pn => pn.MaSDDV == id).ToList();
 
             return View(phieuNhans);

@@ -7,14 +7,15 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "PhieuNhans", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>PhieuNhan</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         @Html.HiddenFor(model => model.MaPhieu)
 
         <div class="form-group">
@@ -28,8 +29,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MaSDDV, "MaSDDV", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("MaSDDV", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MaSDDV, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MaSDDV)
+                <strong>@ViewBag.MaSDDV</strong>
             </div>
         </div>
 
@@ -68,7 +69,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.NgayNhan, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayNhan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.NgayNhan, "{0:yyyy-MM-dd HH:mm:ss}", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.NgayNhan, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -84,7 +85,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.NgayTra, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayTra, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.NgayTra, "{0:yyyy-MM-dd HH:mm:ss}", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.NgayTra, "", new { @class = "text-danger" })
             </div>
         </div>
