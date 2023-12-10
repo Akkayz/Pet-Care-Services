@@ -39,10 +39,24 @@ namespace DichVuThuCung.Controllers
         {
             return View();
         }
-
+        public ActionResult ChiTietSanPham(int id)
+        {
+            var sanpham = from sp in db.SanPhams
+                          where sp.MaSP == id
+                          select sp;
+            return View(sanpham.Single());
+        }
         public ActionResult FormDatLich()
         {
             return View();
+        }
+        public ActionResult LoginLogoutPartial()
+        {
+            return PartialView();
+        }
+        public ActionResult LoginLogout()
+        {
+            return PartialView("LoginLogoutPartial");
         }
     }
 }

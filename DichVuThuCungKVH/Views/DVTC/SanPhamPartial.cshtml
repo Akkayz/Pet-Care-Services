@@ -19,12 +19,14 @@
                                 <div class="img-wrap">
                                     <img src="~/Images/SanPham/@sanPham.Anh" alt="@sanPham.TenSP">
                                 </div>
-                                <h3 class="fix-cut-title">@sanPham.TenSP</h3>
+                                <h3 style="min-height:10px;">
+                                    <a href="@Url.Action("ChiTietSanPham","DVTC", new { id = sanPham.MaSP })" class="text-decoration-none">@sanPham.TenSP</a>
+                                </h3>
                                 <h4 class="product-price">
                                     <div class="price">@sanPham.GiaBan</div>
                                 </h4>
                             </a>
-                            <a href="@Url.Action("ThemGioHang","GioHang", new { ms = sanPham.MaSP, url = Request.Url.ToString() })" class="btn btn-danger btn-custom-product-add" onclick="add_to_cart(this);" data-id="@sanPham.MaSP">
+                            <a href="@Url.Action("ThemGioHang","GioHang", new { ms = sanPham.MaSP, url = Request.Url.ToString() })" class="btn btn-danger btn-custom-product-add" onclick="add_to_cart(this);" data-id="@sanPham.MaSP" >
                                 Chọn mua
                             </a>
                         </div>

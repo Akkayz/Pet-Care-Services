@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using DichVuThuCungKVH.Model;
-//using DichVuThuCungKVH.Models;
+
 namespace DichVuThuCungKVH.Controllers
 {
     public class GioHangController : Controller
@@ -34,6 +34,7 @@ namespace DichVuThuCungKVH.Controllers
             }
             return lstGioHang;
         }
+
         public ActionResult ThemGioHang(int ms, string url)
         {
             //Lay gio hang hien tai
@@ -49,7 +50,7 @@ namespace DichVuThuCungKVH.Controllers
                 sp.iSoLuong++;
             }
             return Redirect(url);
-        }
+    }
         private int TongSoLuong()
         {
             int iTongSoLuong = 0;
@@ -84,11 +85,10 @@ namespace DichVuThuCungKVH.Controllers
         {
             List<GioHang> lstGioHang = LayGioHang();
 
-            // Kiểm tra sản phẩm có trong Session["GioHang"] không
             GioHang sp = lstGioHang.SingleOrDefault(n => n.iMaSanPham == iMaSP);
             if (sp != null)
             {
-                // Xóa sản phẩm cụ thể khỏi giỏ hàng
+                // Xoa sp 
                 lstGioHang.Remove(sp);
 
                 if (lstGioHang.Count == 0)
@@ -96,6 +96,8 @@ namespace DichVuThuCungKVH.Controllers
                     return RedirectToAction("Index", "DVTC");
                 }
             }
+            ViewBag.TongSoLuong = TongSoLuong();
+            ViewBag.TongTien = TongTien();
 
             return RedirectToAction("GioHang");
         }
@@ -137,11 +139,18 @@ namespace DichVuThuCungKVH.Controllers
             ViewBag.TongTien = TongTien();
             return View(lstGioHang);
         }
-        [HttpPost]
+        public ActionResult DatHangPartial()
+        {
+            var maTaiKhoan = Convert.ToInt32(Session["MaTaiKhoan"].ToString());
+            var kh = db.KhachHangs.SingleOrDefault(n => n.MaTK == maTaiKhoan);
+            return PartialView(kh);
+        }
+            [HttpPost]
         public ActionResult DatHang(FormCollection f)
         {
             DonHang ddh = new DonHang();
-            KhachHang kh = (KhachHang)Session["TaiKhoan"];
+            var maTaiKhoan = Convert.ToInt32(Session["MaTaiKhoan"].ToString());
+            var kh = db.KhachHangs.SingleOrDefault(n => n.MaTK == maTaiKhoan);
             List<GioHang> lstGioHang = LayGioHang();
             ddh.MaKH = kh.MaKH;
             ddh.NgayDat = DateTime.Now;
@@ -150,8 +159,8 @@ namespace DichVuThuCungKVH.Controllers
 
             //ddh.TrangThaiThanhToan = 1;
             ddh.TrangThaiThanhToan = false;
-            // db.DonHangs.InsertOnSubmit(ddh);
-            // db.SubmitChanges();
+            db.DonHangs.Add(ddh);
+            db.SaveChanges();
             // Thêm chi tiết đơn hàng
             foreach (var item in lstGioHang)
             {
@@ -160,13 +169,9 @@ namespace DichVuThuCungKVH.Controllers
                 ctdh.MaSP = item.iMaSanPham;
                 ctdh.SoLuong = item.iSoLuong;
                 ctdh.DonGia = (decimal)item.dDonGia;
-                // db.CTDonHangs.InsertOnSubmit(ctdh);
+                 db.CTDonHangs.Add(ctdh);
             }
-
-
-
-
-            //db.SubmitChanges();
+            db.SaveChanges();
             Session["GioHang"] = null;
             return RedirectToAction("XacNhanDonHang", "GioHang");
 
