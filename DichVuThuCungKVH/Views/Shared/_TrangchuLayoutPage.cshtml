@@ -3,7 +3,7 @@
 <head>
     <meta charset=utf-8>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>Dịch vụ chăm sóc thú cưng tại TPHCM - Uy tín và chất lượng</title>
+    <title>Pet Shop</title>
 
     <meta name="keywords" content="dịch vụ thú cưng, dịch vụ chăm sóc thú cưng, dịch vụ tắm thú cưng, dịch vụ tắm cho mèo, dịch vụ tắm cho chó">
     <meta name="description" content="Dogs Mom cung cấp dịch vụ chăm sóc thú cưng tại TPHCM như: tắm, trông giữ, cạo lông, cắt móng,.. tư vấn dinh dưỡng cho chó, mèo uy tín tại tphcm. Chuồng trại chúng tôi luôn đảm bảo tốt như: khử trùng, khử mùi, …giúp thú cưng của bạn thật sử khỏe mạnh.">
@@ -93,7 +93,7 @@
                             <div id="custom-search-input">
                                 <div class="input-group">
                                     <input type="text" name="query" class="form-control" placeholder="Nhập từ khóa để tìm kiếm...">
-                                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                                    <button type="submit" font-size=20px class="btn btn-primary">Tìm kiếm</button>
                                 </div>
                             </div>
                         </form>
@@ -111,20 +111,15 @@
                             <a href="">
                                 <img class="img-nav-btn-tel" src="~/Images/icon-facebook.png" alt="Facebook">
                             </a>
-                            <a href="#">
-                                <img class="img-nav-btn-tel" src="~/Images/icon-pinterest.png" alt="Pinterest">
-                            </a>
+                            
                             <a href="">
                                 <img class="img-nav-btn-tel" src="~/Images/icon-youtube.png" alt="YouTube">
                             </a>
-                            <a href="#">
-                                <img class="img-nav-btn-tel" src="~/Images/icon-twitter.png" alt="Twitter">
-                            </a>
+                            
                         </div>
                         <div class="hotline-head cart-badge">
                             <a href="@Url.Action("GioHang","GioHang")" class="ico-head">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                                <span id="cartItemCount">0</span>
                             </a>
                         </div>
                     </div>
@@ -150,13 +145,13 @@
         <div class=container>
             <div class="row">
 
-                <section class=col-md-12>
+                <section class=col-md-12 id="id1">
                     @Html.Action("CacDichVu", "DVTC")
                 </section>
             </div>
         </div>
 
-        <div class=container>
+        <div class=container id="id2">
             @Html.Action("SanPhamPartial", "DVTC")
         </div>
         <div class="container">
@@ -227,7 +222,7 @@
     <footer>
         <div class=container>
             <div class=col-md-4>
-                <h3 style="font-size: 14px"><strong>KẾT NỐI MẠNG XÃ HỘI</strong></h3>
+                <h3 style="font-size: 20px"><strong>KẾT NỐI MẠNG XÃ HỘI</strong></h3>
                 <div>
                     <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=100048806028664" data-tabs="timeline" data-width="340" data-height="130"
                          data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false">
@@ -238,21 +233,21 @@
                 </div>
             </div>
             <div class=col-md-4>
-                <h3 style="text-align:left;font-size: 14px;text-transform: uppercase;"><strong>Hỗ trợ khách hàng</strong></h3>
+                <h3 style="text-align:left;font-size: 20px;text-transform: uppercase;"><strong>Hỗ trợ khách hàng</strong></h3>
                 <div style="padding-left: 0px">
-                    <p style="text-align:left">
-                        <a href="#" title="quy trình thiết kế và thi công nội thất" ref="nofollow">Quy Trình Làm Việc</a>
+                    <p style="text-align:left; font-size :15px">
+                        <a href="#"   title="quy trình thiết kế và thi công nội thất" ref="nofollow">Quy Trình Làm Việc</a>
                     </p>
-                    <p style="text-align:left">
+                    <p style="text-align: left; font-size: 15px">
                         <a href="#" title="chính sách bảo hành và đổi trả hàng" ref="nofollow">Bảo Hành - Đổi Trả</a>
                     </p>
-                    <p style="text-align:left">
+                    <p style="text-align: left; font-size: 15px">
                         <a href="#" title="hình thức thanh toán tiền" ref="nofollow">Hình Thức Thanh Toán</a>
                     </p>
-                    <p style="text-align:left">
+                    <p style="text-align: left; font-size: 15px">
                         <a href="#" title="chính sách vận chuyển, giao nhận và lắp đặt" ref="nofollow">Vận Chuyển - Giao Nhận</a>
                     </p>
-                    <p style="text-align:left">
+                    <p style="text-align: left; font-size: 15px">
                         <a href="#" title="chính sách bảo mật thông tin" ref="nofollow">Chính Sách Bảo Mật</a>
                     </p>
                 </div>
@@ -260,19 +255,17 @@
                 <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
             </div>
             <div class=col-md-4>
-                <h3 style="font-size: 14px;"><strong>PET SHOP KVH</strong></h3>
-                <div style="padding-left: 0px;">
-                    <p>
-                        <span><em><strong>Mã số thuế: </strong>41X8037202<strong> Ngày đăng ký: </strong>28/02/2020</em></span>
-                    </p>
+                <h3 style="font-size: 20px;"><strong>PET SHOP KVH</strong></h3>
+                <div style="padding-left: 0px; font-size: 15px">
+                    
                     <p>
                         <span>
                             <strong>
-                                Tel: <span style="color:#ff0000">
+                                Tel: <span style="color: #ff0000; font-size: 15px">
                                     <a style=color:#ff0000 href="tel:0387908930">038888888</a>
                                 </span>
                             </strong>
-                            <strong>- Hotline:</strong> <span style="color:#ff0000">
+                            <strong>- Hotline:</strong> <span style="color: #ff0000; font-size: 15px">
                                 <strong><a style="color:#ff0000" href="tel:0387908930 ">038888888 </a></strong>
                             </span>
                         </span>
@@ -285,14 +278,11 @@
                     </p>
                     <p>
                         <span>
-                            <strong>Địa chỉ VP: </strong>
+                            <strong>Địa chỉ : </strong>
                             <em>
-                                <a rel="noopener noreferrer" href="" target="_blank">620 Lũy Bán Bích, phường Tân Thành, quận Tân Phú , TPHCM</a>
+                                <a rel="noopener noreferrer" href="" target="_blank">Thủ Dầu Một, Bình Dương</a>
                             </em>
-                            <strong><br>Chi Nhánh:</strong>
-                            <span>
-                                <a href="">Cơ sở 2: 63 Xóm Củi, p11, quận 8, TPHCM</a>
-                            </span>
+                            
                         </span>
                     </p>
                 </div>
@@ -305,12 +295,12 @@
     </a>
     <ul id=mobile-bar class=visible-xs>
 
-        <li style="background-color:white">
+        <li style="background-color: white; font-size: 15px">
             <a href="tel:0387908930" target="_blank">
                 <img src=/images/za-lo.png width=36>
             </a>
         </li>
-        <li style="background-color:white">
+        <li style="background-color: white; font-size: 15px">
             <a href="https://www.facebook.com/profile.php?id=100048806028664m" target=_blank>
                 <img src="/images/face-book.png?v1" width=36>
             </a>
@@ -321,13 +311,13 @@
             </a>
         </li>
 
-        <li style="background-color:white">
+        <li style="background-color: white; font-size: 15px">
             <a href="tel:0387908930 " target="_blank">
                 <img src="/images/hot-line.png?v=1" width=36>
             </a>
         </li>
 
-        <li style="background-color:white" class="cart-badge">
+        <li style="background-color: white; font-size: 15px" class="cart-badge">
             <a href="https://www.petmom.vn/cart" class="ico-head" style="width: 36px; height: 36px; font-size: 28px;">
                 <i class="glyphicon glyphicon-shopping-cart"></i>
                 <span>0</span>

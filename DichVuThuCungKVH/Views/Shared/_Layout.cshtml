@@ -124,7 +124,6 @@
                         <div class="hotline-head cart-badge">
                             <a href="@Url.Action("GioHang","GioHang")" class="ico-head">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                                <span>0</span>
                             </a>
                         </div>
                     </div>
@@ -148,7 +147,6 @@
 
         <div class=container>
             @RenderBody()
-            @Html.Action("DangKyDichVu", "DichVu")
         </div>
         <div class="container">
             <div class=row>
@@ -340,10 +338,10 @@
     <style>
         /* GioHang */
         table {
-            width: 90%;     
+            width: 90%;
             border-collapse: collapse;
             margin-top: 20px;
-            margin-left:80px;
+            margin-left: 80px;
         }
 
         table, th, td {
@@ -351,18 +349,18 @@
         }
 
         th, td {
-            padding: 10px; 
-            text-align: center; 
-            border: 1px solid #ddd; 
-            font-size:15px;
-        } 
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 15px;
+        }
 
         th {
             background-color: #4CAF50; /*maunen*/
             color: white;
-            font-size:15px;
+            font-size: 15px;
         }
-      
+
         /* Anh */
         .product-image {
             max-width: 100%;
@@ -388,11 +386,12 @@
         .update-btn {
             background-color: #51a351;
         }
+
         input[type="number"] {
-            width: 100px; 
-            height: 28px; 
-            padding: 5px; 
-            box-sizing: border-box; 
+            width: 100px;
+            height: 28px;
+            padding: 5px;
+            box-sizing: border-box;
         }
         /* tongtien */
         .total {
@@ -414,7 +413,9 @@
             .checkout-btn:hover {
                 background-color: #2073c0;
             }
-
     </style>
+   
+   
+   
 </body>
 </html>
