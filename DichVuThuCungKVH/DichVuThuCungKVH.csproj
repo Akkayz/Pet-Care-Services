@@ -306,7 +306,6 @@
     <Content Include="Areas\Admin\Views\NhanViens\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ThuCungs\Delete.cshtml" />
-<<<<<<< Updated upstream
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -330,20 +329,6 @@
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
-=======
-    <Content Include="Areas\Admin\Views\NhanViens\DonHangDaDat.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanViens\SuaDonHang.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanViens\XemChiTietDonHang.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanViens\XoaDonHang.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanViens\DanhSachSuDungDichVu.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanViens\ChinhSuaPhieuNhan.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanViens\XoaPhieuNhan.cshtml" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
->>>>>>> Stashed changes
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
