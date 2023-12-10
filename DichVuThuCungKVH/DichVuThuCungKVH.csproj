@@ -324,6 +324,13 @@
     <Content Include="Areas\Admin\Views\PhieuNhans\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\PhieuNhans\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PhieuNhans\PhieuCuaLuotSDDV.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanViens\DonHangDaDat.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanViens\SuaDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanViens\XemChiTietDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanViens\XoaDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanViens\ChinhSuaPhieuNhan.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanViens\DanhSachSuDungDichVu.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanViens\CapNhatPhieuNhan.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
