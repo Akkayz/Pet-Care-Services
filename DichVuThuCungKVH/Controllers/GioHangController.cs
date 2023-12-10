@@ -5,15 +5,11 @@ using System.Linq;
 using System.Web;
 using DichVuThuCungKVH.Model;
 
-<<<<<<< Updated upstream
-=======
-//using DichVuThuCungKVH.Models;
->>>>>>> Stashed changes
 namespace DichVuThuCungKVH.Controllers
 {
     public class GioHangController : Controller
     {
-        private readonly DACSEntities db = new DACSEntities();
+        private DACSEntities db = new DACSEntities();
         // GET: GioHang
 
         public ActionResult GioHang()
@@ -55,12 +51,8 @@ namespace DichVuThuCungKVH.Controllers
                 sp.iSoLuong++;
             }
             return Redirect(url);
-<<<<<<< Updated upstream
-    }
-=======
         }
 
->>>>>>> Stashed changes
         private int TongSoLuong()
         {
             int iTongSoLuong = 0;
@@ -98,7 +90,7 @@ namespace DichVuThuCungKVH.Controllers
             GioHang sp = lstGioHang.SingleOrDefault(n => n.iMaSanPham == iMaSP);
             if (sp != null)
             {
-                // Xoa sp 
+                // Xoa sp
                 lstGioHang.Remove(sp);
 
                 if (lstGioHang.Count == 0)
@@ -149,18 +141,15 @@ namespace DichVuThuCungKVH.Controllers
             ViewBag.TongTien = TongTien();
             return View(lstGioHang);
         }
-<<<<<<< Updated upstream
+
         public ActionResult DatHangPartial()
         {
             var maTaiKhoan = Convert.ToInt32(Session["MaTaiKhoan"].ToString());
             var kh = db.KhachHangs.SingleOrDefault(n => n.MaTK == maTaiKhoan);
             return PartialView(kh);
         }
-            [HttpPost]
-=======
 
         [HttpPost]
->>>>>>> Stashed changes
         public ActionResult DatHang(FormCollection f)
         {
             DonHang ddh = new DonHang();
@@ -184,14 +173,9 @@ namespace DichVuThuCungKVH.Controllers
                 ctdh.MaSP = item.iMaSanPham;
                 ctdh.SoLuong = item.iSoLuong;
                 ctdh.DonGia = (decimal)item.dDonGia;
-                 db.CTDonHangs.Add(ctdh);
+                db.CTDonHangs.Add(ctdh);
             }
-<<<<<<< Updated upstream
             db.SaveChanges();
-=======
-
-            //db.SubmitChanges();
->>>>>>> Stashed changes
             Session["GioHang"] = null;
             return RedirectToAction("XacNhanDonHang", "GioHang");
         }
