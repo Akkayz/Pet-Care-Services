@@ -5,13 +5,17 @@ using System.Linq;
 using System.Web;
 using DichVuThuCungKVH.Model;
 
+<<<<<<< Updated upstream
+=======
+//using DichVuThuCungKVH.Models;
+>>>>>>> Stashed changes
 namespace DichVuThuCungKVH.Controllers
 {
     public class GioHangController : Controller
     {
-        private DACSEntities db = new DACSEntities();
+        private readonly DACSEntities db = new DACSEntities();
         // GET: GioHang
-        
+
         public ActionResult GioHang()
         {
             List<GioHang> lstGioHang = LayGioHang();
@@ -24,6 +28,7 @@ namespace DichVuThuCungKVH.Controllers
             ViewBag.TongTien = TongTien();
             return View(lstGioHang);
         }
+
         public List<GioHang> LayGioHang()
         {
             List<GioHang> lstGioHang = Session["GioHang"] as List<GioHang>;
@@ -50,7 +55,12 @@ namespace DichVuThuCungKVH.Controllers
                 sp.iSoLuong++;
             }
             return Redirect(url);
+<<<<<<< Updated upstream
     }
+=======
+        }
+
+>>>>>>> Stashed changes
         private int TongSoLuong()
         {
             int iTongSoLuong = 0;
@@ -58,10 +68,10 @@ namespace DichVuThuCungKVH.Controllers
             if (lstGioHang != null)
             {
                 iTongSoLuong = lstGioHang.Sum(n => n.iSoLuong);
-
             }
             return iTongSoLuong;
         }
+
         private double TongTien()
         {
             double dTongTien = 0;
@@ -71,8 +81,8 @@ namespace DichVuThuCungKVH.Controllers
             }
 
             return dTongTien;
-
         }
+
         public ActionResult GioHangPartial()
         {
             ViewBag.TongSoLuong = TongSoLuong();
@@ -101,18 +111,18 @@ namespace DichVuThuCungKVH.Controllers
 
             return RedirectToAction("GioHang");
         }
+
         public ActionResult CapNhatGioHang(int iMaSP, FormCollection f)
         {
             List<GioHang> lstGioHang = LayGioHang();
             GioHang sp = lstGioHang.SingleOrDefault(n => n.iMaSanPham == iMaSP); //Nếu tồn tại thì cho sửa số lượng
             if (sp != null)
             {
-
             }
             sp.iSoLuong = int.Parse(f["txtSoLuong"].ToString());
             return RedirectToAction("GioHang");
-
         }
+
         public ActionResult XoaGioHang()
         {
             List<GioHang> lstGioHang = LayGioHang();
@@ -139,6 +149,7 @@ namespace DichVuThuCungKVH.Controllers
             ViewBag.TongTien = TongTien();
             return View(lstGioHang);
         }
+<<<<<<< Updated upstream
         public ActionResult DatHangPartial()
         {
             var maTaiKhoan = Convert.ToInt32(Session["MaTaiKhoan"].ToString());
@@ -146,6 +157,10 @@ namespace DichVuThuCungKVH.Controllers
             return PartialView(kh);
         }
             [HttpPost]
+=======
+
+        [HttpPost]
+>>>>>>> Stashed changes
         public ActionResult DatHang(FormCollection f)
         {
             DonHang ddh = new DonHang();
@@ -171,10 +186,14 @@ namespace DichVuThuCungKVH.Controllers
                 ctdh.DonGia = (decimal)item.dDonGia;
                  db.CTDonHangs.Add(ctdh);
             }
+<<<<<<< Updated upstream
             db.SaveChanges();
+=======
+
+            //db.SubmitChanges();
+>>>>>>> Stashed changes
             Session["GioHang"] = null;
             return RedirectToAction("XacNhanDonHang", "GioHang");
-
         }
 
         public ActionResult XacNhanDonHang()

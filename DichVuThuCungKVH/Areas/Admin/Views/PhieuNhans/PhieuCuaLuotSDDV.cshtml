@@ -1,0 +1,109 @@
+﻿@model IEnumerable<DichVuThuCungKVH.Model.PhieuNhan>
+
+@{
+    ViewBag.Title = "Details of Receiving Vouchers";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<p>
+    @Html.ActionLink("Create New", "Create", "PhieuNhans", new { maSDDV = ViewBag.MaSDDV }, null)
+</p>
+
+<h2 class="mb-4">Danh sách các phiếu</h2>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaPhieu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaTC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaSDDV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TinhTrangTruocTiepNhan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TinhTrangSauTiepNhan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NguoiGiao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NguoiNhan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayNhan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TinhTrangDichVu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayTra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NguoiTra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GhiChu)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaPhieu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaTC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaSDDV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TinhTrangTruocTiepNhan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TinhTrangSauTiepNhan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NguoiGiao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NguoiNhan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayNhan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TinhTrangDichVu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayTra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NguoiTra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GhiChu)
+                </td>
+            </tr>
+            <tr>
+                <!-- Displaying PhieuNhan properties... -->
+                <td>
+                    @Html.ActionLink("Details", "Details", "PhieuNhans", new { id = item.MaPhieu }) |
+                    @Html.ActionLink("Edit", "Edit", "PhieuNhans", new { id = item.MaPhieu }) |
+                    @Html.ActionLink("Delete", "Delete", "PhieuNhans", new { id = item.MaPhieu }, new { onclick = "return confirm('Are you sure you want to delete this item?');" })
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p class="alert alert-info">Lượt sử dụng dịch vụ này vẫn chưa có phiếu.</p>
+}
