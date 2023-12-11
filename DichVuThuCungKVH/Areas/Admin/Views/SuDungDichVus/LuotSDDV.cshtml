@@ -37,10 +37,18 @@
                     @Html.DisplayFor(modelItem => item.KhachHang.TenKH)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MaSDDV }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.MaSDDV }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MaSDDV }) |
-                    @Html.ActionLink("Xem phiếu", "PhieuCuaLuotSDDV", "PhieuNhans", new { id = item.MaSDDV }, null)
+                    <!-- Hành động -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Action
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="@Url.Action("Details", "SuDungDichVus", new { id = item.MaSDDV })">Details</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Edit", "SuDungDichVus",  new { id = item.MaSDDV })">Edit</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Delete", "SuDungDichVus",  new { id = item.MaSDDV })">Delete</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("PhieuCuaLuotSDDV", "PhieuNhans",  new { id = item.MaSDDV })">Xem  phiếu</a></li>
+                        </ul>
+                    </div>
                 </td>
             </tr>
         }

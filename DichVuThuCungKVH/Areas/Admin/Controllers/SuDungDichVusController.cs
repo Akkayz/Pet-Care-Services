@@ -66,63 +66,59 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
             return View(suDungDichVu);
         }
 
-        public ActionResult Edit(int? id, int? maKH)
+        // GET: Admin/SuDungDichVus/Edit/5
+        public ActionResult Edit(int? id)
         {
-            if (id == null || maKH == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
             SuDungDichVu suDungDichVu = db.SuDungDichVus.Find(id);
             if (suDungDichVu == null)
             {
                 return HttpNotFound();
             }
-
-            ViewBag.MaKH = maKH;
             return View(suDungDichVu);
         }
 
+        // POST: Admin/SuDungDichVus/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(SuDungDichVu suDungDichVu, int maKH)
+        public ActionResult Edit(SuDungDichVu suDungDichVu)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(suDungDichVu).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("LuotSDDV", new { id = maKH });
+                return RedirectToAction("Index");
             }
-
-            ViewBag.MaKH = maKH;
             return View(suDungDichVu);
         }
 
-        public ActionResult Delete(int? id, int? maKH)
+        // GET: Admin/SuDungDichVus/Delete/5
+        public ActionResult Delete(int? id)
         {
-            if (id == null || maKH == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
             SuDungDichVu suDungDichVu = db.SuDungDichVus.Find(id);
             if (suDungDichVu == null)
             {
                 return HttpNotFound();
             }
-
-            ViewBag.MaKH = maKH;
             return View(suDungDichVu);
         }
 
+        // POST: Admin/SuDungDichVus/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id, int maKH)
+        public ActionResult DeleteConfirmed(int id)
         {
             SuDungDichVu suDungDichVu = db.SuDungDichVus.Find(id);
             db.SuDungDichVus.Remove(suDungDichVu);
             db.SaveChanges();
-            return RedirectToAction("LuotSDDV", new { id = maKH });
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

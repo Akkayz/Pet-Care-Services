@@ -35,16 +35,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TinhTrangTruocTiepNhan, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" name="fileTinhTrangTruocTiepNhan" />
+                <input type="file" name="fileTinhTrangTruocTiepNhan" id="fileTinhTrangTruocTiepNhan" onchange="previewImage('fileTinhTrangTruocTiepNhan', 'previewTinhTrangTruocTiepNhan')" />
+                <img id="previewTinhTrangTruocTiepNhan" src="#" alt="Preview" style="max-width: 200px; max-height: 200px; display: none;" />
                 @Html.ValidationMessageFor(model => model.TinhTrangTruocTiepNhan, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <!-- Thêm input file cho TinhTrangSauTiepNhan -->
         <div class="form-group">
             @Html.LabelFor(model => model.TinhTrangSauTiepNhan, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" name="fileTinhTrangSauTiepNhan" />
+                <input type="file" name="fileTinhTrangSauTiepNhan" id="fileTinhTrangSauTiepNhan" onchange="previewImage('fileTinhTrangSauTiepNhan', 'previewTinhTrangSauTiepNhan')" />
+                <img id="previewTinhTrangSauTiepNhan" src="#" alt="Preview" style="max-width: 200px; max-height: 200px; display: none;" />
                 @Html.ValidationMessageFor(model => model.TinhTrangSauTiepNhan, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -116,3 +117,20 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script>
+    function previewImage(inputId, imageId) {
+        var input = document.getElementById(inputId);
+        var image = document.getElementById(imageId);
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                image.src = e.target.result;
+                image.style.display = 'block';  // Hiển thị ảnh
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

@@ -17,9 +17,9 @@
         </EntityType>
         <EntityType Name="CTPhieuNhan_DichVu">
           <Key>
-            <PropertyRef Name="MaPhieu" />
-            <PropertyRef Name="MaDV" />
+            <PropertyRef Name="MaCT" />
           </Key>
+          <Property Name="MaCT" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="MaPhieu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaDV" Type="int" Nullable="false" />
           <Property Name="DichVuSuDung" Type="nvarchar" MaxLength="50" />
@@ -582,9 +582,9 @@
         </EntityType>
         <EntityType Name="CTPhieuNhan_DichVu">
           <Key>
-            <PropertyRef Name="MaPhieu" />
-            <PropertyRef Name="MaDV" />
+            <PropertyRef Name="MaCT" />
           </Key>
+          <Property Name="MaCT" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="MaPhieu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaDV" Type="Int32" Nullable="false" />
           <Property Name="DichVuSuDung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -747,7 +747,7 @@
           <Property Name="MaTC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaKH" Type="Int32" Nullable="false" />
           <Property Name="TenTC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="HinhAnh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HinhAnh" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DacDiem" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Loai" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="MauLong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -986,6 +986,7 @@
                 <ScalarProperty Name="DichVuSuDung" ColumnName="DichVuSuDung" />
                 <ScalarProperty Name="MaDV" ColumnName="MaDV" />
                 <ScalarProperty Name="MaPhieu" ColumnName="MaPhieu" />
+                <ScalarProperty Name="MaCT" ColumnName="MaCT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
