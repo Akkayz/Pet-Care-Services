@@ -131,6 +131,7 @@
     <Compile Include="Areas\Admin\Controllers\TaiKhoansController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThuCungsController.cs" />
     <Compile Include="Controllers\DichVuController.cs" />
+    <Compile Include="Controllers\DSachThuCungController.cs" />
     <Compile Include="Controllers\DVTCController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -371,6 +372,9 @@
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
     <Content Include="Views\GioHang\DatHang.cshtml" />
     <Content Include="Views\GioHang\XacNhanDonHang.cshtml" />
+    <Content Include="Views\DSachThuCung\DanhSachThuCung.cshtml" />
+    <Content Include="Views\DSachThuCung\KhachHang.cshtml" />
+    <Content Include="Views\DSachThuCung\DonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

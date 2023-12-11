@@ -2,112 +2,594 @@
     ViewBag.Title = "DichVu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model DichVuThuCungKVH.Model.KhachHang
+@{
+    ViewBag.Title = "Register";
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- Bootstrap JavaScript và Popper.js (cần thiết cho Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Nút "Đặt Lịch" -->
 
 <section>
-    
+
     <div class="main-wrap">
         <div class="container">
-            <div class="row hidden-xs">
+            <div class="row">
                 <div class="col-md-12">
-                    <ol class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-                        <li><a href="/" title="Trang Chủ">Trang Chủ</a></li>
 
-                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                            <a href="https://www.petmom.vn/dich-vu-cham-soc-thu-cung" itemscope="" itemtype="http://schema.org/Thing" itemprop="item"><span itemprop="name">Dịch vụ thú cưng</span></a>             <meta itemprop="position" content="1">
-                        </li>
-                    </ol>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-10 well well-topic">
+                <div class="col-md-12 well well-topic">
                     <article itemscope="" itemtype="http://schema.org/NewsArticle">
                         <meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="https://google.com/article">
                         <header>
-                            <h1 itemprop="headline">Dịch vụ thú cưng</h1>
+                            <h1 style="text-align:center" itemprop="headline">Dịch vụ thú cưng</h1>
                         </header>
                         <div class="row">
-                            <div class="col-xs-6 col-md-6">
-                                <a href="" class="thumbnail" title="Dịch vụ trông giữ chó mèo">
+                            <div class="col-xs-6 col-md-4">
+                                <a href="#formModalLabel" class="thumbnail" title="Dịch vụ trông giữ chó mèo">
                                     <div class="img-wrap" style="background-image: url('../Images/DichVu/TrongGiuThuCung.jpg'); background-size: cover; ">
                                         <img src="~/Images/DichVu/TrongGiuThuCung.jpg" alt="Dịch vụ trông giữ chó mèo">
                                     </div>
-                                    <div class="caption" style="height: 70px;text-align: center"><span style="line-height: 35px">Dịch vụ trông giữ chó mèo</span></div>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+                                        <h5 class="mb-0 custom-btn-text">Đặt Lịch</h5>
+
+                                    </button>
+                                    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="formModalLabel">Đăng Ký Dịch Vụ</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @using (Html.BeginForm("DangKyDichVu", "DichVu", FormMethod.Post))
+                                                    {
+                                                        @Html.ValidationSummary(true)
+
+                                                        <div class="text-center">
+                                                            <img src="~/Images/LogoKVH.png" class="img-fluid profile-image-pic img-thumbnail my-3 mx-auto d-block" width="200px" alt="profile">
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="TenKH">Tên:</label>
+                                                            @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.TenKH)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="SDT">Số Điện Thoại</label>
+                                                            @Html.TextBoxFor(model => model.SDT, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.SDT)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="DiaChi">Địa Chỉ:</label>
+                                                            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.DiaChi)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="Email">Email:</label>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.Email)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="GhiChu">Notes:</label>
+                                                            @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control mx-auto d-block", rows = 4, cols = 50 })
+                                                            @Html.ValidationMessageFor(model => model.GhiChu)
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input type="submit" value="Đăng Ký" class="btn btn-primary px-5" />
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
                                 </a>
                             </div>
-                            <div class="col-xs-6 col-md-6">
-                                <a href="https://www.petmom.vn/cham-soc-thu-cung" class="thumbnail" title="Chăm sóc thú cưng">
+                            <div class="col-xs-6 col-md-4">
+                                <a href="#formModalLabel" class="thumbnail" title="Chăm sóc thú cưng">
                                     <div class="img-wrap" style="background-image: url('../Images/DichVu/chamsocthucung2.jpg'); background-size: cover;">
                                         <img src="~/Images/DichVu/chamsocthucung2.jpg" alt="Chăm sóc thú cưng">
                                     </div>
-                                    <div class="caption" style="height: 70px;text-align: center"><span style="line-height: 35px">Chăm sóc thú cưng</span></div>
+
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+                                        <h5 class="mb-0 custom-btn-text">Đặt Lịch</h5>
+
+                                    </button>
+                                    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="formModalLabel">Đăng Ký Dịch Vụ</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @using (Html.BeginForm("DangKyDichVu", "DichVu", FormMethod.Post))
+                                                    {
+                                                        @Html.ValidationSummary(true)
+
+                                                        <div class="text-center">
+                                                            <img src="~/Images/LogoKVH.png" class="img-fluid profile-image-pic img-thumbnail my-3 mx-auto d-block" width="200px" alt="profile">
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="TenKH">Tên:</label>
+                                                            @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.TenKH)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="SDT">Số Điện Thoại</label>
+                                                            @Html.TextBoxFor(model => model.SDT, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.SDT)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="DiaChi">Địa Chỉ:</label>
+                                                            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.DiaChi)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="Email">Email:</label>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.Email)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="GhiChu">Notes:</label>
+                                                            @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control mx-auto d-block", rows = 4, cols = 50 })
+                                                            @Html.ValidationMessageFor(model => model.GhiChu)
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input type="submit" value="Đăng Ký" class="btn btn-primary px-5" />
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </a>
                             </div>
-                            <div class="col-xs-6 col-md-6">
-                                <a href="https://www.petmom.vn/cuu-ho-thu-cung" class="thumbnail" title="Cứu hộ thú cung">
+                            <div class="col-xs-6 col-md-4">
+                                <a href="#formModalLabel" class="thumbnail" title="Cứu hộ thú cung">
                                     <div class="img-wrap" style="background-image: url(../Images/DichVu/Cuu-ho-thu-cung.jpg); background-size: cover;">
                                         <img src="~/Images/DichVu/Cuu-ho-thu-cung.jpg" alt="Cứu hộ thú cung">
                                     </div>
-                                    <div class="caption" style="height: 70px;text-align: center"><span style="line-height: 35px">Cứu hộ thú cung</span></div>
+
+
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+                                        <h5 class="mb-0 custom-btn-text">Đặt Lịch</h5>
+
+                                    </button>
+                                    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="formModalLabel">Đăng Ký Dịch Vụ</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @using (Html.BeginForm("DangKyDichVu", "DichVu", FormMethod.Post))
+                                                    {
+                                                        @Html.ValidationSummary(true)
+
+                                                        <div class="text-center">
+                                                            <img src="~/Images/LogoKVH.png" class="img-fluid profile-image-pic img-thumbnail my-3 mx-auto d-block" width="200px" alt="profile">
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="TenKH">Tên:</label>
+                                                            @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.TenKH)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="SDT">Số Điện Thoại</label>
+                                                            @Html.TextBoxFor(model => model.SDT, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.SDT)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="DiaChi">Địa Chỉ:</label>
+                                                            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.DiaChi)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="Email">Email:</label>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.Email)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="GhiChu">Notes:</label>
+                                                            @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control mx-auto d-block", rows = 4, cols = 50 })
+                                                            @Html.ValidationMessageFor(model => model.GhiChu)
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input type="submit" value="Đăng Ký" class="btn btn-primary px-5" />
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </a>
                             </div>
-                            <div class="col-xs-6 col-md-6">
-                                <a href="https://www.petmom.vn/khach-san-cho-meo" class="thumbnail" title="Khách sạn chó mèo">
+                            <div class="col-xs-6 col-md-4">
+                                <a href="#formModalLabel" class="thumbnail" title="Khách sạn chó mèo">
                                     <div class="img-wrap" style="background-image: url(&quot;https://www.petmom.vn/uploads/category/khach-san-cho-meo_1612242262.jpg&quot;); background-size: cover;">
                                         <img src="https://www.petmom.vn/uploads/category/khach-san-cho-meo_1612242262.jpg" alt="Khách sạn chó mèo">
                                     </div>
-                                    <div class="caption" style="height: 70px;text-align: center"><span style="line-height: 35px">Khách sạn chó mèo</span></div>
+
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+                                        <h5 class="mb-0 custom-btn-text">Đặt Lịch</h5>
+
+                                    </button>
+                                    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="formModalLabel">Đăng Ký Dịch Vụ</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @using (Html.BeginForm("DangKyDichVu", "DichVu", FormMethod.Post))
+                                                    {
+                                                        @Html.ValidationSummary(true)
+
+                                                        <div class="text-center">
+                                                            <img src="~/Images/LogoKVH.png" class="img-fluid profile-image-pic img-thumbnail my-3 mx-auto d-block" width="200px" alt="profile">
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="TenKH">Tên:</label>
+                                                            @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.TenKH)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="SDT">Số Điện Thoại</label>
+                                                            @Html.TextBoxFor(model => model.SDT, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.SDT)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="DiaChi">Địa Chỉ:</label>
+                                                            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.DiaChi)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="Email">Email:</label>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.Email)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="GhiChu">Notes:</label>
+                                                            @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control mx-auto d-block", rows = 4, cols = 50 })
+                                                            @Html.ValidationMessageFor(model => model.GhiChu)
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input type="submit" value="Đăng Ký" class="btn btn-primary px-5" />
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </a>
                             </div>
-                            <div class="col-xs-6 col-md-6">
-                                <a href="https://www.petmom.vn/spa-cho-thu-cung-la-gi" class="thumbnail" title="Spa cho thú cưng là gì?">
+                            <div class="col-xs-6 col-md-4">
+                                <a href="#formModalLabel" class="thumbnail" title="Spa cho thú cưng là gì?">
                                     <div class="img-wrap" style="background-image: url(&quot;https://www.petmom.vn/uploads/category/dich-vu-spa-cho-cho-meo_1612248623.jpg&quot;); background-size: cover;">
                                         <img src="https://www.petmom.vn/uploads/category/dich-vu-spa-cho-cho-meo_1612248623.jpg" alt="Spa cho thú cưng là gì?">
                                     </div>
-                                    <div class="caption" style="height: 70px;text-align: center"><span style="line-height: 35px">Spa cho thú cưng là gì?</span></div>
+
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+                                        <h5 class="mb-0 custom-btn-text">Đặt Lịch</h5>
+
+                                    </button>
+                                    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="formModalLabel">Đăng Ký Dịch Vụ</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                    <div class="caption" style="height: 70px;text-align: center"><span style="line-height: 35px">Spa cho thú cưng là gì?</span></div>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @using (Html.BeginForm("DangKyDichVu", "DichVu", FormMethod.Post))
+                                                    {
+                                                        @Html.ValidationSummary(true)
+
+                                                        <div class="text-center">
+                                                            <img src="~/Images/LogoKVH.png" class="img-fluid profile-image-pic img-thumbnail my-3 mx-auto d-block" width="200px" alt="profile">
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="TenKH">Tên:</label>
+                                                            @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.TenKH)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="SDT">Số Điện Thoại</label>
+                                                            @Html.TextBoxFor(model => model.SDT, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.SDT)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="DiaChi">Địa Chỉ:</label>
+                                                            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.DiaChi)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="Email">Email:</label>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.Email)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="GhiChu">Notes:</label>
+                                                            @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control mx-auto d-block", rows = 4, cols = 50 })
+                                                            @Html.ValidationMessageFor(model => model.GhiChu)
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input type="submit" value="Đăng Ký" class="btn btn-primary px-5" />
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </a>
                             </div>
-                            <div class="col-xs-6 col-md-6">
-                                <a href="https://www.petmom.vn/dich-vu-tam-cho-cho-meo" class="thumbnail" title="Dịch vụ tắm cho chó mèo">
+                            <div class="col-xs-6 col-md-4">
+                                <a href="#formModalLabel" class="thumbnail" title="Dịch vụ tắm cho chó mèo">
                                     <div class="img-wrap" style="background-image: url(&quot;https://www.petmom.vn/uploads/category/tam-cho-cho-meo_1612248603.jpg&quot;); background-size: cover;">
                                         <img src="https://www.petmom.vn/uploads/category/tam-cho-cho-meo_1612248603.jpg" alt="Dịch vụ tắm cho chó mèo">
                                     </div>
-                                    <div class="caption" style="height: 70px;text-align: center"><span style="line-height: 35px">Dịch vụ tắm cho chó mèo</span></div>
+
+
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+                                        <h5 class="mb-0 custom-btn-text">Đặt Lịch</h5>
+
+                                    </button>
+                                    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="formModalLabel">Đăng Ký Dịch Vụ</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+
+                                                </div>
+                                                <div class="modal-body">
+                                                    @using (Html.BeginForm("DangKyDichVu", "DichVu", FormMethod.Post))
+                                                    {
+                                                        @Html.ValidationSummary(true)
+
+                                                        <div class="text-center">
+                                                            <img src="~/Images/LogoKVH.png" class="img-fluid profile-image-pic img-thumbnail my-3 mx-auto d-block" width="200px" alt="profile">
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="TenKH">Tên:</label>
+                                                            @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.TenKH)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="SDT">Số Điện Thoại</label>
+                                                            @Html.TextBoxFor(model => model.SDT, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.SDT)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="DiaChi">Địa Chỉ:</label>
+                                                            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.DiaChi)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="Email">Email:</label>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.Email)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="GhiChu">Notes:</label>
+                                                            @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control mx-auto d-block", rows = 4, cols = 50 })
+                                                            @Html.ValidationMessageFor(model => model.GhiChu)
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input type="submit" value="Đăng Ký" class="btn btn-primary px-5" />
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </a>
                             </div>
-                            <div class="col-xs-6 col-md-6">
-                                <a href="https://www.petmom.vn/cat-tia-long-cho-cho-meo" class="thumbnail" title="Dịch vụ cắt tỉa lông chó mèo">
+                            <div class="col-xs-6 col-md-4">
+                                <a href="#formModalLabel" class="thumbnail" title="Dịch vụ cắt tỉa lông chó mèo">
                                     <div class="img-wrap" style="background-image: url(&quot;https://www.petmom.vn/uploads/category/cat-tia-long-cho-meo_1612248645.jpg&quot;); background-size: cover;">
                                         <img src="https://www.petmom.vn/uploads/category/cat-tia-long-cho-meo_1612248645.jpg" alt="Dịch vụ cắt tỉa lông chó mèo">
                                     </div>
-                                    <div class="caption" style="height: 70px;text-align: center"><span style="line-height: 35px">Dịch vụ cắt tỉa lông chó mèo</span></div>
+
+
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+                                        <h5 class="mb-0 custom-btn-text">Đặt Lịch</h5>
+
+                                    </button>
+                                    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="formModalLabel">Đăng Ký Dịch Vụ</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @using (Html.BeginForm("DangKyDichVu", "DichVu", FormMethod.Post))
+                                                    {
+                                                        @Html.ValidationSummary(true)
+
+                                                        <div class="text-center">
+                                                            <img src="~/Images/LogoKVH.png" class="img-fluid profile-image-pic img-thumbnail my-3 mx-auto d-block" width="200px" alt="profile">
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="TenKH">Tên:</label>
+                                                            @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.TenKH)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="SDT">Số Điện Thoại</label>
+                                                            @Html.TextBoxFor(model => model.SDT, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.SDT)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="DiaChi">Địa Chỉ:</label>
+                                                            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.DiaChi)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="Email">Email:</label>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.Email)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="GhiChu">Notes:</label>
+                                                            @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control mx-auto d-block", rows = 4, cols = 50 })
+                                                            @Html.ValidationMessageFor(model => model.GhiChu)
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input type="submit" value="Đăng Ký" class="btn btn-primary px-5" />
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </a>
                             </div>
-                            <div class="col-xs-6 col-md-6">
-                                <a href="https://www.petmom.vn/thoi-trang-thu-cung" class="thumbnail" title="Thời trang thú cưng">
+                            <div class="col-xs-6 col-md-4">
+                                <a href="#formModalLabel" class="thumbnail" title="Thời trang thú cưng">
                                     <div class="img-wrap" style="background-image: url(&quot;https://www.petmom.vn/uploads/category/thoi-trang-thu-cung_1612249248.jpg&quot;); background-size: cover;">
                                         <img src="https://www.petmom.vn/uploads/category/thoi-trang-thu-cung_1612249248.jpg" alt="Thời trang thú cưng">
                                     </div>
-                                    <div class="caption" style="height: 70px;text-align: center"><span style="line-height: 35px">Thời trang thú cưng</span></div>
+
+
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+                                        <h5 class="mb-0 custom-btn-text">Đặt Lịch</h5>
+
+                                    </button>
+                                    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="formModalLabel">Đăng Ký Dịch Vụ</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @using (Html.BeginForm("DangKyDichVu", "DichVu", FormMethod.Post))
+                                                    {
+                                                        @Html.ValidationSummary(true)
+
+                                                        <div class="text-center">
+                                                            <img src="~/Images/LogoKVH.png" class="img-fluid profile-image-pic img-thumbnail my-3 mx-auto d-block" width="200px" alt="profile">
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="TenKH">Tên:</label>
+                                                            @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.TenKH)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="SDT">Số Điện Thoại</label>
+                                                            @Html.TextBoxFor(model => model.SDT, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.SDT)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="DiaChi">Địa Chỉ:</label>
+                                                            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.DiaChi)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="Email">Email:</label>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control mx-auto d-block" })
+                                                            @Html.ValidationMessageFor(model => model.Email)
+                                                        </div>
+
+                                                        <div class="mb-3 text-center">
+                                                            <label for="GhiChu">Notes:</label>
+                                                            @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control mx-auto d-block", rows = 4, cols = 50 })
+                                                            @Html.ValidationMessageFor(model => model.GhiChu)
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input type="submit" value="Đăng Ký" class="btn btn-primary px-5" />
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </a>
                             </div>
                         </div>
 
-                        
-                        
                     </article>
                 </div>
-                <div class="col-md-4 hidden-xs">
-                    
-                    <div class="container mt-5">
-                        <div class="row justify-content-center">
-                            <div class="col-md-8">
-                                @Html.Action("DangKyDichVu", "DichVu")
-                            </div>
-                        </div>
-                    </div>
-                    
 
-                </div>
             </div>
         </div>
     </div>
