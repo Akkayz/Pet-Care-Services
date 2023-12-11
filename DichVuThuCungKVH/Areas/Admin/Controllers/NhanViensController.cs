@@ -283,22 +283,20 @@ namespace DichVuThuCungKVH.Areas.Admin.Controllers
 
             return RedirectToAction("DanhSachSuDungDichVu");
         }
-        public ActionResult Chitietphieunhan(int? maPhieu)
+        public ActionResult Chitietphieunhan(int? id)
         {
-            if (maPhieu == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            // Lấy thông tin chi tiết phiếu nhận từ cơ sở dữ liệu theo id
-            CTPhieuNhan_DichVu chitietPhieuNhan = db.CTPhieuNhan_DichVu.Find(maPhieu);
-
-            if (chitietPhieuNhan == null)
+            CTPhieuNhan_DichVu ctPhieuNhan = db.CTPhieuNhan_DichVu.Find(id);
+            if (ctPhieuNhan == null)
             {
                 return HttpNotFound();
             }
 
-            return View(chitietPhieuNhan);
+            return View(ctPhieuNhan);
         }
     }
 }
