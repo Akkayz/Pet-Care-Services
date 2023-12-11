@@ -9,7 +9,7 @@
     <a class="btn btn-primary" href="@Url.Action("Create", "PhieuNhans", new { maSDDV = ViewBag.MaSDDV })">Create New</a>
 </p>
 
-<h2 class="mb-4">Danh sách các phiếu @ViewBag.MaSDDV</h2>
+<h2 class="mb-4">Danh sách các phiếu của  @ViewBag.MaSDDV</h2>
 
 @if (Model.Any())
 {
@@ -113,6 +113,7 @@
                                 <li><a class="dropdown-item" href="@Url.Action("Details", "PhieuNhans", new { id = item.MaPhieu })">Details</a></li>
                                 <li><a class="dropdown-item" href="@Url.Action("Edit", "PhieuNhans", new { id = item.MaPhieu })">Edit</a></li>
                                 <li><a class="dropdown-item" href="@Url.Action("Delete", "PhieuNhans", new { id = item.MaPhieu })">Delete</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("ChiTietPhieu", "CTPhieuNhan_DichVu", new { maPhieu = item.MaPhieu })">Xem chi tiết phiếu</a></li>
                             </ul>
                         </div>
                     </td>

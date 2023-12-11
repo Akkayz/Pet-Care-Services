@@ -19,8 +19,8 @@
           <Key>
             <PropertyRef Name="MaCT" />
           </Key>
-          <Property Name="MaCT" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="MaPhieu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaCT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaPhieu" Type="int" Nullable="false" />
           <Property Name="MaDV" Type="int" Nullable="false" />
           <Property Name="DichVuSuDung" Type="nvarchar" MaxLength="50" />
           <Property Name="NguoiThucHien" Type="nvarchar" MaxLength="50" />
@@ -584,8 +584,8 @@
           <Key>
             <PropertyRef Name="MaCT" />
           </Key>
-          <Property Name="MaCT" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="MaPhieu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaPhieu" Type="Int32" Nullable="false" />
           <Property Name="MaDV" Type="Int32" Nullable="false" />
           <Property Name="DichVuSuDung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NguoiThucHien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
