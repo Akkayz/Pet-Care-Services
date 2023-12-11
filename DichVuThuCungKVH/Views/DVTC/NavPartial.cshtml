@@ -4,7 +4,7 @@
 
         <p class="lbl">DANH MỤC SẢN PHẨM <i class="fa fa-caret-down text-25"></i></p>
 
-        <ul class="ul primary" >
+        <ul class="ul primary">
             <li class="not-pro"><a href="/"><span class="span-root">Trang chủ</span></a></li>
             <li class="is-pro">
                 <a href="#">
@@ -13,12 +13,12 @@
                 <div class="level2">
                     <div class="box-sub-nav  clear ">
                         <a href="#id1" class="cat1" title="Dịch Vụ">
-                            Danh Sách Các Dịch Vụ 
+                            Danh Sách Các Dịch Vụ
                         </a>
-                        
-                        
+
+
                     </div>
-                    
+
                     <div class="box-sub-nav  clear ">
                         <a href="#id2" class="cat1" title="Sản Phẩm">
                             Danh Sách Các Sản Phẩm
@@ -29,7 +29,7 @@
                 </div>
             </li>
 
-            
+
             <li class="is-pro">
                 <a href="@Url.Action("DichVu","DVTC")">
                     <span class="span-root">Dịch vụ thú cưng</span>
@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </li>
-            
+
             <li class="is-pro">
                 <a href="#">
                     <span class="span-root">Tài Khoản</span>
@@ -116,7 +116,12 @@
                         </a>
                     </div>
                 </div>
-</li>
+            </li>
+            <li class="is-pro">
+                <a href="@Url.Action("Login", "Home", new { area = "Admin" })">
+                    <span class="span-root">Admin</span>
+                </a>
+            </li>
         </ul>
     </div><!--//-->
 
